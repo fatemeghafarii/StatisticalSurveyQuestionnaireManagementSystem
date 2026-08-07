@@ -1,0 +1,64 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Update="Persistence\Seed\Data\*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Persistence\Seed\Data\Cities.json" />
+    <None Remove="Persistence\Seed\Data\Jobs.json" />
+    <None Remove="Persistence\Seed\Data\Provinces.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Persistence\Seed\Data\Cities.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Persistence\Seed\Data\Jobs.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Persistence\Seed\Data\Provinces.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StatisticalSurveyQuestionnaire.Application\StatisticalSurveyQuestionnaire.Application.csproj" />
+    <ProjectReference Include="..\StatisticalSurveyQuestionnaire.Domain\StatisticalSurveyQuestionnaire.Domain.csproj" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.29" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.29">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.29">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.29" />
+	  <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="10.0.10" />
+	  <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Persistence\Seed\Dtos\CitySeedDto.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="Persistence\Seed\Dtos\JobSeedDto.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="Persistence\Seed\Dtos\ProvinceSeedDto.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Identity\" />
+  </ItemGroup>
+
+</Project>

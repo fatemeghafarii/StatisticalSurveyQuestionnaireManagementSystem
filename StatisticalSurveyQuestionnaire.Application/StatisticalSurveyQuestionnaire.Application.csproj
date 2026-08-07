@@ -1,0 +1,61 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StatisticalSurveyQuestionnaire.Domain\StatisticalSurveyQuestionnaire.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Common\Exceptions\" />
+    <Folder Include="Common\Security\" />
+    <Folder Include="Features\Answers\Common\" />
+    <Folder Include="Features\Answers\Delete\" />
+    <Folder Include="Features\Answers\GetById\" />
+    <Folder Include="Features\Answers\GetList\" />
+    <Folder Include="Features\Answers\Update\" />
+    <Folder Include="Features\Households\Create\" />
+    <Folder Include="Features\Households\Delete\" />
+    <Folder Include="Features\Households\GetById\" />
+    <Folder Include="Features\Households\GetList\" />
+    <Folder Include="Features\Households\Update\" />
+    <Folder Include="Features\Questionnaires\Delete\" />
+    <Folder Include="Features\Questionnaires\GetById\" />
+    <Folder Include="Features\Questionnaires\GetList\" />
+    <Folder Include="Features\Questionnaires\Update\" />
+    <Folder Include="Features\QuestionOptions\Common\" />
+    <Folder Include="Features\QuestionOptions\Delete\" />
+    <Folder Include="Features\QuestionOptions\GetById\" />
+    <Folder Include="Features\QuestionOptions\GetList\" />
+    <Folder Include="Features\QuestionOptions\Update\" />
+    <Folder Include="Features\Questions\Create\" />
+    <Folder Include="Features\Questions\Delete\" />
+    <Folder Include="Features\Questions\GetById\" />
+    <Folder Include="Features\Questions\GetList\" />
+    <Folder Include="Features\Questions\Update\" />
+    <Folder Include="Features\Reports\Common\" />
+    <Folder Include="Features\Reports\Delete\" />
+    <Folder Include="Features\Reports\GetById\" />
+    <Folder Include="Features\Reports\GetList\" />
+    <Folder Include="Features\Reports\Update\" />
+    <Folder Include="Features\SurveyPeriods\Common\" />
+    <Folder Include="Features\SurveyPeriods\Delete\" />
+    <Folder Include="Features\SurveyPeriods\GetById\" />
+    <Folder Include="Features\SurveyPeriods\GetList\" />
+    <Folder Include="Features\SurveyPeriods\Update\" />
+    <Folder Include="Features\SurveyResponses\Common\" />
+    <Folder Include="Features\SurveyResponses\Delete\" />
+    <Folder Include="Features\SurveyResponses\GetById\" />
+    <Folder Include="Features\SurveyResponses\GetList\" />
+    <Folder Include="Features\SurveyResponses\Update\" />
+    <PackageReference Include="FluentValidation" Version="12.1.1" />
+	  <PackageReference Include="MediatR" Version="14.2.0" />
+	  <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.29" />
+  </ItemGroup>
+
+</Project>

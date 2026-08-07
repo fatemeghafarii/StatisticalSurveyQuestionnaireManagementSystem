@@ -1,0 +1,316 @@
+﻿[
+  {
+    "Id": 1,
+    "Title": "مدیریت و امور اداری",
+    "Code": "ADMIN",
+    "ParentJobId": null
+  },
+  {
+    "Id": 2,
+    "Title": "مدیر",
+    "Code": "ADMIN_MANAGER",
+    "ParentJobId": 1
+  },
+  {
+    "Id": 3,
+    "Title": "سرپرست",
+    "Code": "ADMIN_SUPERVISOR",
+    "ParentJobId": 1
+  },
+  {
+    "Id": 4,
+    "Title": "کارمند اداری",
+    "Code": "ADMIN_EMPLOYEE",
+    "ParentJobId": 1
+  },
+  {
+    "Id": 5,
+    "Title": "منشی",
+    "Code": "SECRETARY",
+    "ParentJobId": 1
+  },
+  {
+    "Id": 6,
+    "Title": "کارشناس منابع انسانی",
+    "Code": "HR_SPECIALIST",
+    "ParentJobId": 1
+  },
+  {
+    "Id": 7,
+    "Title": "حسابدار",
+    "Code": "ACCOUNTANT",
+    "ParentJobId": 1
+  },
+
+  {
+    "Id": 8,
+    "Title": "فناوری اطلاعات و مهندسی",
+    "Code": "IT_ENGINEERING",
+    "ParentJobId": null
+  },
+  {
+    "Id": 9,
+    "Title": "برنامه‌نویس نرم‌افزار",
+    "Code": "SOFTWARE_DEVELOPER",
+    "ParentJobId": 8
+  },
+  {
+    "Id": 10,
+    "Title": "کارشناس فناوری اطلاعات",
+    "Code": "IT_SPECIALIST",
+    "ParentJobId": 8
+  },
+  {
+    "Id": 11,
+    "Title": "مهندس",
+    "Code": "ENGINEER",
+    "ParentJobId": 8
+  },
+  {
+    "Id": 12,
+    "Title": "تکنسین فنی",
+    "Code": "TECHNICIAN",
+    "ParentJobId": 8
+  },
+  {
+    "Id": 13,
+    "Title": "معمار",
+    "Code": "ARCHITECT",
+    "ParentJobId": 8
+  },
+
+  {
+    "Id": 14,
+    "Title": "پزشکی و سلامت",
+    "Code": "HEALTHCARE",
+    "ParentJobId": null
+  },
+  {
+    "Id": 15,
+    "Title": "پزشک",
+    "Code": "DOCTOR",
+    "ParentJobId": 14
+  },
+  {
+    "Id": 16,
+    "Title": "پرستار",
+    "Code": "NURSE",
+    "ParentJobId": 14
+  },
+  {
+    "Id": 17,
+    "Title": "داروساز",
+    "Code": "PHARMACIST",
+    "ParentJobId": 14
+  },
+  {
+    "Id": 18,
+    "Title": "دندانپزشک",
+    "Code": "DENTIST",
+    "ParentJobId": 14
+  },
+  {
+    "Id": 19,
+    "Title": "کارمند حوزه سلامت",
+    "Code": "HEALTH_WORKER",
+    "ParentJobId": 14
+  },
+
+  {
+    "Id": 20,
+    "Title": "آموزش و پژوهش",
+    "Code": "EDUCATION",
+    "ParentJobId": null
+  },
+  {
+    "Id": 21,
+    "Title": "معلم",
+    "Code": "TEACHER",
+    "ParentJobId": 20
+  },
+  {
+    "Id": 22,
+    "Title": "استاد دانشگاه",
+    "Code": "PROFESSOR",
+    "ParentJobId": 20
+  },
+  {
+    "Id": 23,
+    "Title": "پژوهشگر",
+    "Code": "RESEARCHER",
+    "ParentJobId": 20
+  },
+  {
+    "Id": 24,
+    "Title": "دانشجو",
+    "Code": "STUDENT",
+    "ParentJobId": 20
+  },
+
+  {
+    "Id": 25,
+    "Title": "بازرگانی و خدمات",
+    "Code": "BUSINESS_SERVICE",
+    "ParentJobId": null
+  },
+  {
+    "Id": 26,
+    "Title": "صاحب کسب‌وکار",
+    "Code": "BUSINESS_OWNER",
+    "ParentJobId": 25
+  },
+  {
+    "Id": 27,
+    "Title": "فروشنده",
+    "Code": "SALESPERSON",
+    "ParentJobId": 25
+  },
+  {
+    "Id": 28,
+    "Title": "بازاریاب",
+    "Code": "MARKETER",
+    "ParentJobId": 25
+  },
+  {
+    "Id": 29,
+    "Title": "مشاور املاک",
+    "Code": "REAL_ESTATE_AGENT",
+    "ParentJobId": 25
+  },
+  {
+    "Id": 30,
+    "Title": "نماینده بیمه",
+    "Code": "INSURANCE_AGENT",
+    "ParentJobId": 25
+  },
+  {
+    "Id": 31,
+    "Title": "راننده",
+    "Code": "DRIVER",
+    "ParentJobId": 25
+  },
+
+  {
+    "Id": 32,
+    "Title": "کشاورزی و منابع طبیعی",
+    "Code": "AGRICULTURE",
+    "ParentJobId": null
+  },
+  {
+    "Id": 33,
+    "Title": "کشاورز",
+    "Code": "FARMER",
+    "ParentJobId": 32
+  },
+  {
+    "Id": 34,
+    "Title": "باغدار",
+    "Code": "GARDENER",
+    "ParentJobId": 32
+  },
+  {
+    "Id": 35,
+    "Title": "دامدار",
+    "Code": "LIVESTOCK_FARMER",
+    "ParentJobId": 32
+  },
+
+  {
+    "Id": 36,
+    "Title": "کارگری و مشاغل آزاد",
+    "Code": "LABOR",
+    "ParentJobId": null
+  },
+  {
+    "Id": 37,
+    "Title": "کارگر کارخانه",
+    "Code": "FACTORY_WORKER",
+    "ParentJobId": 36
+  },
+  {
+    "Id": 38,
+    "Title": "کارگر ساختمانی",
+    "Code": "CONSTRUCTION_WORKER",
+    "ParentJobId": 36
+  },
+  {
+    "Id": 39,
+    "Title": "نظافتچی",
+    "Code": "CLEANER",
+    "ParentJobId": 36
+  },
+  {
+    "Id": 40,
+    "Title": "نگهبان",
+    "Code": "SECURITY_GUARD",
+    "ParentJobId": 36
+  },
+  {
+    "Id": 41,
+    "Title": "فریلنسر",
+    "Code": "FREELANCER",
+    "ParentJobId": 36
+  },
+
+  {
+    "Id": 42,
+    "Title": "فرهنگ و هنر",
+    "Code": "CULTURE_ART",
+    "ParentJobId": null
+  },
+  {
+    "Id": 43,
+    "Title": "هنرمند",
+    "Code": "ARTIST",
+    "ParentJobId": 42
+  },
+  {
+    "Id": 44,
+    "Title": "نویسنده",
+    "Code": "WRITER",
+    "ParentJobId": 42
+  },
+  {
+    "Id": 45,
+    "Title": "خبرنگار",
+    "Code": "JOURNALIST",
+    "ParentJobId": 42
+  },
+  {
+    "Id": 46,
+    "Title": "طراح",
+    "Code": "DESIGNER",
+    "ParentJobId": 42
+  },
+
+  {
+    "Id": 47,
+    "Title": "فاقد شغل",
+    "Code": "NOT_EMPLOYED",
+    "ParentJobId": null
+  },
+  {
+    "Id": 48,
+    "Title": "بیکار",
+    "Code": "UNEMPLOYED",
+    "ParentJobId": 47
+  },
+  {
+    "Id": 49,
+    "Title": "بازنشسته",
+    "Code": "RETIRED",
+    "ParentJobId": 47
+  },
+  {
+    "Id": 50,
+    "Title": "خانه‌دار",
+    "Code": "HOMEMAKER",
+    "ParentJobId": 47
+  },
+  {
+    "Id": 51,
+    "Title": "سایر",
+    "Code": "OTHER",
+    "ParentJobId": 47
+  }
+]
