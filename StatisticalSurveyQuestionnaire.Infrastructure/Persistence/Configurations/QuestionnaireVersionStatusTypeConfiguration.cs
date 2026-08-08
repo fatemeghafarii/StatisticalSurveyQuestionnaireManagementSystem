@@ -4,11 +4,11 @@ using StatisticalSurveyQuestionnaire.Domain.Entities;
 
 namespace StatisticalSurveyQuestionnaire.Infrastructure.Persistence.Configurations;
 
-public class RoleConfiguration : IEntityTypeConfiguration<Role>
+public class QuestionnaireVersionStatusTypeConfiguration : IEntityTypeConfiguration<QuestionnaireVersionStatusType>
 {
-    public void Configure(EntityTypeBuilder<Role> builder)
+    public void Configure(EntityTypeBuilder<QuestionnaireVersionStatusType> builder)
     {
-        builder.ToTable("Roles");
+        builder.ToTable("QuestionnaireVersionStatusTypes");
 
         builder.HasKey(x => x.Id);
 
@@ -17,12 +17,12 @@ public class RoleConfiguration : IEntityTypeConfiguration<Role>
                .IsRequired();
 
         builder.Property(x => x.Title)
-               .HasMaxLength(100)
+               .HasMaxLength(50)
                .IsRequired();
 
         builder.Property(x => x.Order)
                .IsRequired();
- 
+
         builder.Property(x => x.IsActive)
                .HasDefaultValue(true);
 

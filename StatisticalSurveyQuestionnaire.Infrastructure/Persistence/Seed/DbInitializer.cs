@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StatisticalSurveyQuestionnaire.Domain.Entities;
 using StatisticalSurveyQuestionnaire.Infrastructure.Persistence.Context;
 using StatisticalSurveyQuestionnaire.Infrastructure.Persistence.Seed.Seeders;
 
@@ -16,6 +15,7 @@ public class DbInitializer
     private readonly MaritalStatusSeeder _maritalStatusSeeder;
     private readonly QuestionTypeSeeder _questionTypeSeeder;
     private readonly SurveyResponseStatusTypeSeeder _surveyResponseStatusTypeSeeder;
+    private readonly QuestionnaireVersionStatusTypeSeeder _questionnaireVersionStatusTypeSeeder;
     private readonly RoleSeeder _roleSeeder;
 
     private readonly JobSeeder _jobSeeder;
@@ -25,13 +25,14 @@ public class DbInitializer
 
         ProvinceSeeder provinceSeeder,
         CitySeeder citySeeder,
-        
+
         EducationLevelSeeder educationLevelSeeder,
         MaritalStatusSeeder maritalStatusSeeder,
         QuestionTypeSeeder questionTypeSeeder,
         SurveyResponseStatusTypeSeeder surveyResponseStatusTypeSeeder,
+        QuestionnaireVersionStatusTypeSeeder questionnaireVersionStatusTypeSeeder,
         RoleSeeder roleSeeder,
-        
+
         JobSeeder jobSeeder)
     {
         _context = context;
@@ -43,8 +44,9 @@ public class DbInitializer
         _maritalStatusSeeder = maritalStatusSeeder;
         _questionTypeSeeder = questionTypeSeeder;
         _surveyResponseStatusTypeSeeder = surveyResponseStatusTypeSeeder;
+        _questionnaireVersionStatusTypeSeeder = questionnaireVersionStatusTypeSeeder;
         _roleSeeder = roleSeeder;
-        
+
         _jobSeeder = jobSeeder;
     }
 
@@ -65,6 +67,8 @@ public class DbInitializer
         await _questionTypeSeeder.SeedAsync();
 
         await _surveyResponseStatusTypeSeeder.SeedAsync();
+
+        await _questionnaireVersionStatusTypeSeeder.SeedAsync();
 
         await _roleSeeder.SeedAsync();
 

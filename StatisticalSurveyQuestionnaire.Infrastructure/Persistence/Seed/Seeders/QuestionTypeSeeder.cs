@@ -12,50 +12,76 @@ public class QuestionTypeSeeder
 
     public async Task SeedAsync()
     {
-        if (await _context.QuestionTypes.AnyAsync())
-            return;
-
         var items = new List<QuestionType>
         {
             new()
             {
-                Title = "Text",
                 Code = "TEXT",
+                Title = "متنی",
+                Order = 1,
+                IsActive = true
             },
-            new()
-            {
-                Title = "Number",
-                Code = "NUMBER",
-            },
-            new()
-            {
-                Title = "Date",
-                Code = "DATE",
-            },
-            new()
-            {
-                Title = "Single Choice",
-                Code = "SINGLE_CHOICE",
 
-            },
             new()
             {
-                Title = "Multiple Choice",
-                Code = "MULTIPLE_CHOICE"
+                Code = "NUMBER",
+                Title = "عددی",
+                Order = 2,
+                IsActive = true
             },
+
             new()
             {
-                Title = "Boolean",
-                Code = "BOOLEAN"
+                Code = "SINGLE_CHOICE",
+                Title = "تک انتخابی",
+                Order = 3,
+                IsActive = true
+            },
+
+            new()
+            {
+                Code = "MULTIPLE_CHOICE",
+                Title = "چند انتخابی",
+                Order = 4,
+                IsActive = true
+            },
+
+            new()
+            {
+                Code = "BOOLEAN",
+                Title = "بله / خیر",
+                Order = 5,
+                IsActive = true
+            },
+
+            new()
+            {
+                Code = "DATE",
+                Title = "تاریخ",
+                Order = 6,
+                IsActive = true
             }
         };
 
         foreach (var item in items)
         {
-            SeedEntityHelper.SetAuditFields(item);
-        }
+            var existingEntity =
+                await _context.QuestionTypes
+                    .FirstOrDefaultAsync(x => x.Code == item.Code);
 
-        await _context.QuestionTypes.AddRangeAsync(items);
+            if (existingEntity is null)
+            {
+                SeedEntityHelper.SetAuditFields(item);
+
+                await _context.QuestionTypes.AddAsync(item);
+
+                continue;
+            }
+
+            existingEntity.Title = item.Title;
+            existingEntity.Order = item.Order;
+            existingEntity.IsActive = item.IsActive;
+        }
 
         await _context.SaveChangesAsync();
     }

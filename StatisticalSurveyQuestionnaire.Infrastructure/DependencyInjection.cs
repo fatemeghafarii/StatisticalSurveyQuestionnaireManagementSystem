@@ -31,6 +31,7 @@ public static class DependencyInjection
         services.AddScoped<MaritalStatusSeeder>();
         services.AddScoped<QuestionTypeSeeder>();
         services.AddScoped<SurveyResponseStatusTypeSeeder>();
+        services.AddScoped<QuestionnaireVersionStatusTypeSeeder>();
         services.AddScoped<RoleSeeder>();
 
         services.AddScoped<JobSeeder>();

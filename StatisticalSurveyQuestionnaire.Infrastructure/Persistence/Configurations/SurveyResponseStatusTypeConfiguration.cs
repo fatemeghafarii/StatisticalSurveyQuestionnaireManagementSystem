@@ -12,6 +12,10 @@ public class SurveyResponseStatusTypeConfiguration : IEntityTypeConfiguration<Su
 
         builder.HasKey(x => x.Id);
 
+        builder.Property(x => x.Code)
+               .HasMaxLength(50)
+               .IsRequired();
+
         builder.Property(x => x.Title)
                .HasMaxLength(50)
                .IsRequired();
@@ -22,10 +26,7 @@ public class SurveyResponseStatusTypeConfiguration : IEntityTypeConfiguration<Su
         builder.Property(x => x.IsActive)
                .HasDefaultValue(true);
 
-        builder.HasIndex(x => x.Order)
-               .IsUnique();
-
-        builder.HasIndex(x => x.Title)
+        builder.HasIndex(x => new { x.Code, x.Title, x.Order })
                .IsUnique();
     }
 }

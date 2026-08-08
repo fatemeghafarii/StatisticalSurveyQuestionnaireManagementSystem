@@ -12,6 +12,10 @@ public class EducationLevelConfiguration : IEntityTypeConfiguration<EducationLev
 
         builder.HasKey(x => x.Id);
 
+        builder.Property(x => x.Code)
+               .HasMaxLength(50)
+               .IsRequired();
+
         builder.Property(x => x.Title)
                .HasMaxLength(100)
                .IsRequired();
@@ -22,7 +26,7 @@ public class EducationLevelConfiguration : IEntityTypeConfiguration<EducationLev
         builder.Property(x => x.IsActive)
                .HasDefaultValue(true);
 
-        builder.HasIndex(x => new {x.Title, x.Order })
+        builder.HasIndex(x => new { x.Code, x.Title, x.Order })
                .IsUnique();
     }
 }

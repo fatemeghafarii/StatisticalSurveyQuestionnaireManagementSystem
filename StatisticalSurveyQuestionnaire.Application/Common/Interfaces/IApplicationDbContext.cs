@@ -16,6 +16,7 @@ public interface IApplicationDbContext
     DbSet<Question> Questions { get; }
     DbSet<Questionnaire> Questionnaires { get; }
     DbSet<QuestionnaireVersion> QuestionnaireVersions { get; }
+    DbSet<QuestionnaireVersionStatusType> QuestionnaireVersionStatusTypes { get; }
     DbSet<QuestionOption> QuestionOptions { get; }
     DbSet<QuestionType> QuestionTypes { get; }
     DbSet<Role> Roles { get; }

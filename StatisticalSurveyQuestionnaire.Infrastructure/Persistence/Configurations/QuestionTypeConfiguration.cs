@@ -12,15 +12,15 @@ public class QuestionTypeConfiguration : IEntityTypeConfiguration<QuestionType>
 
         builder.HasKey(x => x.Id);
 
-        builder.Property(x => x.Title)
-               .HasMaxLength(100)
-               .IsRequired();
-
         builder.Property(x => x.Code)
                .HasMaxLength(50)
                .IsRequired();
 
-        builder.HasIndex(x => x.Title)
+        builder.Property(x => x.Title)
+               .HasMaxLength(100)
+               .IsRequired();
+    
+        builder.HasIndex(x => new { x.Code, x.Title, x.Order })
                .IsUnique();
     } 
 }

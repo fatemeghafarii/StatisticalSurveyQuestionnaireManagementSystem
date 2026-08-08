@@ -12,31 +12,35 @@ public class MaritalStatusSeeder
 
     public async Task SeedAsync()
     {
-        if (await _context.MaritalStatuses.AnyAsync())
-            return;
-
         var items = new List<MaritalStatus>
         {
             new()
             {
+                Code = "SINGLE",
                 Title = "مجرد",
                 Order = 1,
                 IsActive = true
             },
+
             new()
             {
+                Code = "MARRIED",
                 Title = "متأهل",
                 Order = 2,
                 IsActive = true
             },
-           new()
+
+            new()
             {
-                Title = "مطلقه",
+                Code = "DIVORCED",
+                Title = "مطلق",
                 Order = 3,
                 IsActive = true
             },
-           new()
+
+            new()
             {
+                Code = "WIDOWED",
                 Title = "بیوه",
                 Order = 4,
                 IsActive = true
@@ -45,10 +49,24 @@ public class MaritalStatusSeeder
 
         foreach (var item in items)
         {
-            SeedEntityHelper.SetAuditFields(item);
-        }
+            var existingEntity =
+                await _context.MaritalStatuses
+                    .FirstOrDefaultAsync(x => x.Code == item.Code);
 
-        await _context.MaritalStatuses.AddRangeAsync(items);
+            if (existingEntity is null)
+            {
+                SeedEntityHelper.SetAuditFields(item);
+
+                await _context.MaritalStatuses
+                    .AddAsync(item);
+
+                continue;
+            }
+
+            existingEntity.Title = item.Title;
+            existingEntity.Order = item.Order;
+            existingEntity.IsActive = item.IsActive;
+        }
 
         await _context.SaveChangesAsync();
     }

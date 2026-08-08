@@ -12,49 +12,59 @@ public class EducationLevelSeeder
 
     public async Task SeedAsync()
     {
-        if (await _context.EducationLevels.AnyAsync())
-            return;
-
         var items = new List<EducationLevel>
         {
             new()
             {
+                Code = "ILLITERATE",
                 Title = "بی‌سواد",
                 Order = 1,
                 IsActive = true
             },
+
             new()
             {
+                Code = "CYCLE",
                 Title = "سیکل",
                 Order = 2,
                 IsActive = true
             },
+
             new()
             {
+                Code = "DIPLOMA",
                 Title = "دیپلم",
                 Order = 3,
                 IsActive = true
             },
+
             new()
             {
+                Code = "ASSOCIATE",
                 Title = "کاردانی",
                 Order = 4,
                 IsActive = true
             },
+
             new()
             {
+                Code = "BACHELOR",
                 Title = "کارشناسی",
                 Order = 5,
                 IsActive = true
             },
+
             new()
             {
+                Code = "MASTER",
                 Title = "کارشناسی ارشد",
                 Order = 6,
                 IsActive = true
             },
+
             new()
             {
+                Code = "PHD",
                 Title = "دکتری",
                 Order = 7,
                 IsActive = true
@@ -63,10 +73,23 @@ public class EducationLevelSeeder
 
         foreach (var item in items)
         {
-            SeedEntityHelper.SetAuditFields(item);
-        }
+            var existingEntity =
+                await _context.EducationLevels
+                    .FirstOrDefaultAsync(x => x.Code == item.Code);
 
-        await _context.EducationLevels.AddRangeAsync(items);
+            if (existingEntity is null)
+            {
+                SeedEntityHelper.SetAuditFields(item);
+
+                await _context.EducationLevels.AddAsync(item);
+
+                continue;
+            }
+
+            existingEntity.Title = item.Title;
+            existingEntity.Order = item.Order;
+            existingEntity.IsActive = item.IsActive;
+        }
 
         await _context.SaveChangesAsync();
     }

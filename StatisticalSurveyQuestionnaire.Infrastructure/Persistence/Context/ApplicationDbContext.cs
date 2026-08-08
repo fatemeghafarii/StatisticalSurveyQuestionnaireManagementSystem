@@ -17,6 +17,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     public DbSet<Question> Questions { get; set; } = null!;
     public DbSet<Questionnaire> Questionnaires { get; set; } = null!;
     public DbSet<QuestionnaireVersion> QuestionnaireVersions { get; set; } = null!;
+    public DbSet<QuestionnaireVersionStatusType> QuestionnaireVersionStatusTypes { get; set; } = null!;
     public DbSet<QuestionOption> QuestionOptions { get; set; } = null!;
     public DbSet<QuestionType> QuestionTypes { get; set; } = null!;
     public DbSet<Role> Roles { get; set; } = null!;

@@ -4,84 +4,61 @@ using StatisticalSurveyQuestionnaire.Infrastructure.Persistence.Context;
 
 namespace StatisticalSurveyQuestionnaire.Infrastructure.Persistence.Seed.Seeders;
 
-public class RoleSeeder
+public class QuestionnaireVersionStatusTypeSeeder
 {
     private readonly ApplicationDbContext _context;
 
-    public RoleSeeder(ApplicationDbContext context) => _context = context;
-    
+    public QuestionnaireVersionStatusTypeSeeder(ApplicationDbContext context) => _context = context;
+
     public async Task SeedAsync()
     {
-
-        var items = new List<Role>
+        var items = new List<QuestionnaireVersionStatusType>
         {
             new()
             {
-                Title = "ادمین",
+                Code = "DRAFT",
+                Title = "پیش ‌نویس",
                 Order = 1,
                 IsActive = true
             },
+
             new()
             {
-                Title = "مدیر سیستم",
+                Code = "PUBLISHED",
+                Title = "منتشر شده",
                 Order = 2,
                 IsActive = true
             },
+
             new()
             {
-                Title = "مدیر طرح آماری",
+                Code = "CLOSED",
+                Title = "بسته شده",
                 Order = 3,
                 IsActive = true
             },
+
             new()
             {
-                Title = "طراح پرسشنامه",
+                Code = "ARCHIVED",
+                Title = "بایگانی شده",
                 Order = 4,
                 IsActive = true
-            },
-            new()
-            {
-                Title = "سرپرست آمارگیری",
-                Order = 5,
-                IsActive = true
-            },
-            new()
-            {
-                Title = "آمارگیر",
-                Order = 6,
-                IsActive = true
-            },
-            new()
-            {
-                Title = "بازبین داده‌ها",
-                Order = 7,
-                IsActive = true
-            },
-            new()
-            {
-                Title = "تحلیلگر آماری",
-                Order = 8,
-                IsActive = true
-            },
-            new()
-            {
-                Title = "مشاهده‌گر",
-                Order = 9,
-                IsActive = true
-            },
+            }
         };
 
         foreach (var item in items)
         {
             var existingEntity =
-                await _context.Roles
+                await _context.QuestionnaireVersionStatusTypes
                     .FirstOrDefaultAsync(x => x.Code == item.Code);
 
             if (existingEntity is null)
             {
                 SeedEntityHelper.SetAuditFields(item);
 
-                await _context.Roles.AddAsync(item);
+                await _context.QuestionnaireVersionStatusTypes
+                    .AddAsync(item);
 
                 continue;
             }

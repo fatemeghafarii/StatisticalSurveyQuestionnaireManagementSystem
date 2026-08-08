@@ -1,12 +1,18 @@
 ﻿using MediatR;
 using StatisticalSurveyQuestionnaire.Application.Common.Enums;
 using StatisticalSurveyQuestionnaire.Application.Common.Interfaces;
+using StatisticalSurveyQuestionnaire.Application.Common.Results;
+using StatisticalSurveyQuestionnaire.Application.Features.QuestionnaireVersions.Create;
 using StatisticalSurveyQuestionnaire.Domain.Entities;
 
 namespace StatisticalSurveyQuestionnaire.Application.Features.Questionnaires.Create;
 public class CreateQuestionnaireCommand
-{
-}
+(
+    string Title,
+    string? Description,
+    bool IsActive
+
+) : IRequest<Result<CreateQuestionnaireResponse>>;
 public class CreateQuestionnaireCommandHandler //Result<CreateQuestionnaireCommand>
 {
     private readonly IApplicationDbContext _context;
