@@ -9,4 +9,5 @@ public interface IRepository<TEntity, TKey> where TEntity : BaseEntity<TKey>, ne
         //Task DeleteAsync(...);
 
         //Task SaveChangesAsync();
+        //use singleordefault method for find one id 
 }

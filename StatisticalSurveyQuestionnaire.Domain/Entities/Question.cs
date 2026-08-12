@@ -7,9 +7,7 @@ public class Question: BaseEntity<int>
     public int QuestionnaireVersionId { get; set; }
     public string Text { get; set; } = null!;
     public int QuestionTypeId { get; set; }
-    /// <summary>
-    /// برای تعیین ترتیب نمایش سؤال‌ها در پرسشنامه
-    /// </summary>
+    // برای تعیین ترتیب نمایش سؤال‌ها در پرسشنامه
     public int Order { get; set; }
     public QuestionnaireVersion QuestionnaireVersion { get; set; } = null!;
     public QuestionType QuestionType { get; set; }

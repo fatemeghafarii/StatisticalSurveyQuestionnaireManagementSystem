@@ -11,4 +11,5 @@ public class Household : BaseEntity<int>
     public string Code { get; set; } = null!;
     public Address Address { get; set; }
     public ICollection<SurveyResponse> SurveyResponses { get; set; } = new List<SurveyResponse>();
+    public ICollection<Person> Persones { get; set; } = new List<Person>();
 }

@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using StatisticalSurveyQuestionnaire.Application.Common.Constants;
 using StatisticalSurveyQuestionnaire.Application.Common.Interfaces;
 using StatisticalSurveyQuestionnaire.Application.Common.Results;
 using StatisticalSurveyQuestionnaire.Domain.Entities;
@@ -25,7 +26,7 @@ public sealed class CreateQuestionnaireVersionCommandHandler
                        cancellationToken);
 
 
-        if (!questionnaireExists)
+        if (!questionnaireExists) 
         {
             return Result<CreateQuestionnaireVersionResponse>
                 .Failure(
@@ -42,9 +43,15 @@ public sealed class CreateQuestionnaireVersionCommandHandler
                 ?? 0;
 
         var draftStatus = await _context.QuestionnaireVersionStatusTypes
-            .FirstAsync(
-                   x => x.Code == "DRAFT",
+            .SingleOrDefaultAsync(
+                   x => x.Code == QuestionnaireVersionStatusCodes.Draft,
+                   //x => x.Code == "DRAFT",
                 cancellationToken);
+
+        if (draftStatus is null)
+        {
+            return Result<CreateQuestionnaireVersionResponse>.Failure("وضعیت پیش‌نویس پرسشنامه پیدا نشد.");
+        }
 
         var version = new QuestionnaireVersion
         {
@@ -62,13 +69,9 @@ public sealed class CreateQuestionnaireVersionCommandHandler
         };
 
         await _context.QuestionnaireVersions
-         .AddAsync(
-             version,
-             cancellationToken);
+            .AddAsync(version,cancellationToken);
 
-
-        await _context.SaveChangesAsync(
-            cancellationToken);
+        await _context.SaveChangesAsync(cancellationToken);
 
         return Result<CreateQuestionnaireVersionResponse>
            .Success(

@@ -4,7 +4,7 @@ using StatisticalSurveyQuestionnaire.Domain.Entities;
 namespace StatisticalSurveyQuestionnaire.Application.Common.Interfaces;
 public interface IApplicationDbContext
 {
-    //آخر سر چک کن اگر پراپرتی رفرنس نداشت در جای دیگه ایی از لایه اپلیکیشن حذفش کن 
+    // TODO:آخر سر چک کن اگر پراپرتی رفرنس نداشت در جای دیگه ایی از لایه اپلیکیشن حذفش کن 
     DbSet<Answer> Answers { get; }
     DbSet<City> Cities { get; }
     DbSet<EducationLevel> EducationLevels { get; }

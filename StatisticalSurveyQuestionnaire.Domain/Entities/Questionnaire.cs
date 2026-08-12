@@ -7,21 +7,13 @@ namespace StatisticalSurveyQuestionnaire.Domain.Entities;
 /// </summary>
 public class Questionnaire: BaseEntity<int>
 {
-    /// <summary>
-    /// عنوان پرسشنامه
-    /// </summary>
+    // عنوان پرسشنامه
     public string Title { get; set; } = null!;
-    /// <summary>
-    /// توضیحات
-    /// </summary>
+    // توضیحات
     public string? Description { get; set; }
-    /// <summary>
-    /// کد پرسشنامه
-    /// </summary>
+    // کد پرسشنامه
     public string Code { get; set; } = null!;
-    /// <summary>
-    /// فعال یا غیرفعال بودن
-    /// </summary>
+    // فعال یا غیرفعال بودن
     public bool IsActive { get; set; }
     public ICollection<SurveyResponse> SurveyResponses { get; set; } = new List<SurveyResponse>();
     public ICollection<QuestionnaireVersion> QuestionnaireVersions { get; set; } = new List<QuestionnaireVersion>();
