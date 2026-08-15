@@ -6,7 +6,8 @@ using StatisticalSurveyQuestionnaire.Application.Common.Results;
 namespace StatisticalSurveyQuestionnaire.Application.Features.QuestionnaireVersions.GetList;
 
 public sealed class GetQuestionnaireVersionsQueryHandler
-    : IRequestHandler<GetQuestionnaireVersionsQuery,
+    : IRequestHandler<
+        GetQuestionnaireVersionsQuery,
         Result<List<GetQuestionnaireVersionsResponse>>>
 {
     private readonly IApplicationDbContext _context;
@@ -23,7 +24,9 @@ public sealed class GetQuestionnaireVersionsQueryHandler
 
         if (!questionnaireExists)
         {
-            return Result<List<GetQuestionnaireVersionsResponse>>.Failure("پرسشنامه مورد نظر پیدا نشد.");
+            return Result<List<GetQuestionnaireVersionsResponse>>
+                .Failure(
+                    "پرسشنامه مورد نظر پیدا نشد.");
         }
 
         return Result<List<GetQuestionnaireVersionsResponse>>

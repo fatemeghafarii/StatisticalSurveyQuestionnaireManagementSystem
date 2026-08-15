@@ -6,7 +6,8 @@ using StatisticalSurveyQuestionnaire.Application.Common.Results;
 namespace StatisticalSurveyQuestionnaire.Application.Features.Questionnaires.Deactivate;
 
 public sealed class DeactivateQuestionnaireCommandHandler
-    : IRequestHandler<DeactivateQuestionnaireCommand,
+    : IRequestHandler<
+        DeactivateQuestionnaireCommand,
         Result>
 {
     private readonly IApplicationDbContext _context;
@@ -23,12 +24,16 @@ public sealed class DeactivateQuestionnaireCommandHandler
 
         if (questionnaire is null)
         {
-            return Result.Failure("پرسشنامه مورد نظر پیدا نشد.");
+            return Result
+                .Failure(
+                    "پرسشنامه مورد نظر پیدا نشد.");
         }
 
         if (!questionnaire.IsActive)
         {
-            return Result.Failure("پرسشنامه در حال حاضر غیرفعال است.");
+            return Result
+                .Failure(
+                    "پرسشنامه در حال حاضر غیرفعال است.");
         }
 
         questionnaire.IsActive = false;

@@ -50,7 +50,9 @@ public sealed class CreateQuestionnaireVersionCommandHandler
 
         if (draftStatus is null)
         {
-            return Result<CreateQuestionnaireVersionResponse>.Failure("وضعیت پیش‌نویس پرسشنامه پیدا نشد.");
+            return Result<CreateQuestionnaireVersionResponse>
+                .Failure(
+                    "وضعیت پیش ‌نویس پرسشنامه پیدا نشد.");
         }
 
         var version = new QuestionnaireVersion

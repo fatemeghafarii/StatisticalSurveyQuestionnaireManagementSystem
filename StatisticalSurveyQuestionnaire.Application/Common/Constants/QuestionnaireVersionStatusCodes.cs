@@ -1,5 +1,5 @@
 ﻿namespace StatisticalSurveyQuestionnaire.Application.Common.Constants;
-public sealed class QuestionnaireVersionStatusCodes
+public static class QuestionnaireVersionStatusCodes
 {
     public const string Draft = "DRAFT";
     public const string Published = "PUBLISHED";

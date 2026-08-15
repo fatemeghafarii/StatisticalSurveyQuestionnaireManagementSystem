@@ -32,11 +32,7 @@
     <Folder Include="Features\QuestionOptions\GetById\" />
     <Folder Include="Features\QuestionOptions\GetList\" />
     <Folder Include="Features\QuestionOptions\Update\" />
-    <Folder Include="Features\Questions\Create\" />
     <Folder Include="Features\Questions\Delete\" />
-    <Folder Include="Features\Questions\GetById\" />
-    <Folder Include="Features\Questions\GetList\" />
-    <Folder Include="Features\Questions\Update\" />
     <Folder Include="Features\Reports\Common\" />
     <Folder Include="Features\Reports\Delete\" />
     <Folder Include="Features\Reports\GetById\" />

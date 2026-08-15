@@ -6,14 +6,15 @@ using StatisticalSurveyQuestionnaire.Application.Common.Results;
 namespace StatisticalSurveyQuestionnaire.Application.Features.QuestionnaireVersions.GetById;
 
 public sealed class GetQuestionnaireVersionByIdQueryHandler
-    : IRequestHandler<GetQuestionnaireVersionByIdQuery,
+    : IRequestHandler<
+        GetQuestionnaireVersionByIdQuery,
         Result<GetQuestionnaireVersionByIdResponse>>
 {
     private readonly IApplicationDbContext _context;
     public GetQuestionnaireVersionByIdQueryHandler(IApplicationDbContext context) => _context = context;
     public async Task<Result<GetQuestionnaireVersionByIdResponse>> Handle(GetQuestionnaireVersionByIdQuery request, CancellationToken cancellationToken)
     {
-        var versionExists =
+        var version =
             await _context.QuestionnaireVersions
             .AsNoTracking()
             .Where(x => x.Id == request.Id)
@@ -30,11 +31,13 @@ public sealed class GetQuestionnaireVersionByIdQueryHandler
             })
             .SingleOrDefaultAsync(cancellationToken);
 
-        if (versionExists is null)
+        if (version is null)
         {
-            return Result<GetQuestionnaireVersionByIdResponse>.Failure("نسخه مورد نظر پیدا نشد.");
+            return Result<GetQuestionnaireVersionByIdResponse>
+                .Failure(
+                    "نسخه مورد نظر پیدا نشد.");
         }
 
-        return Result<GetQuestionnaireVersionByIdResponse>.Success(versionExists);
+        return Result<GetQuestionnaireVersionByIdResponse>.Success(version);
     }
 }

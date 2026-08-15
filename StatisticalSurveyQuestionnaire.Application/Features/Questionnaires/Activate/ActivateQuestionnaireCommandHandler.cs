@@ -6,7 +6,8 @@ using StatisticalSurveyQuestionnaire.Application.Common.Results;
 namespace StatisticalSurveyQuestionnaire.Application.Features.Questionnaires.Activate;
 
 public sealed class ActivateQuestionnaireCommandHandler
-    : IRequestHandler<ActivateQuestionnaireCommand,
+    : IRequestHandler<
+        ActivateQuestionnaireCommand,
         Result>
 {
     private readonly IApplicationDbContext _context;
@@ -24,7 +25,9 @@ public sealed class ActivateQuestionnaireCommandHandler
 
         if (questionnaire is null)
         {
-            return Result.Failure("پرسشنامه مورد نظر پیدا نشد.");
+            return Result
+                .Failure(
+                    "پرسشنامه مورد نظر پیدا نشد.");
         }
 
         questionnaire.IsActive = true;
