@@ -37,7 +37,7 @@ public sealed class GetQuestionsQueryHandler
             .OrderBy(x => x.Order)
             .Skip((request.Pagination.PageNumber - 1) * request.Pagination.PageSize)
             .Take(request.Pagination.PageSize)
-            .Select(x => new QuestionListItem
+            .Select(x => new QuestionItem
             {
                 Id = x.Id,
                 QuestionnaireVersionId = x.QuestionnaireVersionId,
@@ -53,7 +53,7 @@ public sealed class GetQuestionsQueryHandler
         return Result<GetQuestionsResponse>
             .Success(new GetQuestionsResponse
             {
-                Data = new PaginatedList<QuestionListItem>
+                Data = new PaginatedList<QuestionItem>
                 { 
                     Items = items,
                     PageNumber = request.Pagination.PageNumber,

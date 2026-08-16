@@ -4,7 +4,7 @@ namespace StatisticalSurveyQuestionnaire.Application.Features.QuestionnaireVersi
 
 public sealed class GetQuestionnaireVersionsResponse
 {
-    public PaginatedList<QuestionnaireVersionListItem> Data { get; init; } = null!;
+    public PaginatedList<QuestionnaireVersionItem> Data { get; init; } = null!;
     //public IReadOnlyList<QuestionnaireVersionListItem> Items { get; init; } = new List<QuestionnaireVersionListItem>();
 
     //public int PageNumber { get; init; }
@@ -16,7 +16,7 @@ public sealed class GetQuestionnaireVersionsResponse
     //public int TotalPages => (int)Math.Ceiling(TotalCount / (double)PageSize);
 }
 
-public sealed class QuestionnaireVersionListItem
+public sealed class QuestionnaireVersionItem
 {
     public int Id { get; init; }
 

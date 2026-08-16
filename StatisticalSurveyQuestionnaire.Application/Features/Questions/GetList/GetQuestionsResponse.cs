@@ -4,7 +4,7 @@ namespace StatisticalSurveyQuestionnaire.Application.Features.Questions.GetList;
 
 public sealed class GetQuestionsResponse
 {
-    public PaginatedList<QuestionListItem> Data { get; init; } = null!;
+    public PaginatedList<QuestionItem> Data { get; init; } = null!;
     //public IReadOnlyList<QuestionListItem> Items { get; init; } = new List<QuestionListItem>();
 
     //public int PageNumber { get; init; }
@@ -16,7 +16,7 @@ public sealed class GetQuestionsResponse
     //public int TotalPages => (int)Math.Ceiling(TotalCount / (double)PageSize);
 }
 
-public sealed class QuestionListItem
+public sealed class QuestionItem
 {
     public int Id { get; init; }
 

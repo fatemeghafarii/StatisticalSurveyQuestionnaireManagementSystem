@@ -2,10 +2,10 @@
 
 namespace StatisticalSurveyQuestionnaire.Application.Features.QuestionnaireVersions.GetById;
 
-public sealed class GetQuestionnaireVersionByIdValidator
+public sealed class GetQuestionnaireVersionByIdQueryValidator
     : AbstractValidator<GetQuestionnaireVersionByIdQuery>
 {
-    public GetQuestionnaireVersionByIdValidator()
+    public GetQuestionnaireVersionByIdQueryValidator()
     {
         RuleFor(x => x.Id)
             .GreaterThan(0)

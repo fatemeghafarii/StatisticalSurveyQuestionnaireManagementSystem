@@ -34,13 +34,14 @@ public sealed class GetQuestionnaireVersionsQueryHandler
             .AsNoTracking()
             .Where(x => x.QuestionnaireId == request.QuestionnaireId);
 
-        var items = await query
+        var items = 
+            await query
             .OrderByDescending(x => x.VersionNumber)
             //.Skip((request.PageNumber - 1) * request.PageSize)
             //.Take(request.PageSize)
             .Skip((request.Pagination.PageNumber - 1) * request.Pagination.PageSize)
             .Take(request.Pagination.PageSize)
-            .Select(x => new QuestionnaireVersionListItem
+            .Select(x => new QuestionnaireVersionItem
             {
                 Id = x.Id,
                 QuestionnaireId = x.QuestionnaireId,
@@ -58,7 +59,7 @@ public sealed class GetQuestionnaireVersionsQueryHandler
         return Result<GetQuestionnaireVersionsResponse>
             .Success(new GetQuestionnaireVersionsResponse
             {
-                Data = new PaginatedList<QuestionnaireVersionListItem>
+                Data = new PaginatedList<QuestionnaireVersionItem>
                 {
                     Items = items,
                     PageNumber = request.Pagination.PageNumber,

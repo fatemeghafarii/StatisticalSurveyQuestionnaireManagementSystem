@@ -17,6 +17,7 @@
     <Folder Include="Features\Answers\Delete\" />
     <Folder Include="Features\Answers\GetById\" />
     <Folder Include="Features\Answers\GetList\" />
+    <Folder Include="Features\Answers\Create\" />
     <Folder Include="Features\Answers\Update\" />
     <Folder Include="Features\Households\Create\" />
     <Folder Include="Features\Households\Delete\" />
@@ -26,7 +27,6 @@
     <Folder Include="Features\Questionnaires\Common\" />
     <Folder Include="Features\Questionnaires\Delete\" />
     <Folder Include="Features\Questionnaires\GetById\" />
-    <Folder Include="Features\Questionnaires\GetList\" />
     <Folder Include="Features\Questionnaires\Update\" />
     <Folder Include="Features\QuestionOptions\Common\" />
     <Folder Include="Features\QuestionOptions\Reorder\" />
@@ -44,6 +44,7 @@
     <Folder Include="Features\SurveyResponses\Delete\" />
     <Folder Include="Features\SurveyResponses\GetById\" />
     <Folder Include="Features\SurveyResponses\GetList\" />
+    <Folder Include="Features\SurveyResponses\Create\" />
     <Folder Include="Features\SurveyResponses\Update\" />
     <PackageReference Include="FluentValidation" Version="12.1.1" />
 	  <PackageReference Include="MediatR" Version="14.2.0" />
