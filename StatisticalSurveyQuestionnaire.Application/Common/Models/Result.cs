@@ -1,4 +1,4 @@
-﻿namespace StatisticalSurveyQuestionnaire.Application.Common.Results;
+﻿namespace StatisticalSurveyQuestionnaire.Application.Common.Models;
 public class Result
 {
     public bool IsSuccess { get; }

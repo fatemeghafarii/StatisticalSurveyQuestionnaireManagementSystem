@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using StatisticalSurveyQuestionnaire.Application.Common.Interfaces;
-using StatisticalSurveyQuestionnaire.Application.Common.Results;
+using StatisticalSurveyQuestionnaire.Application.Common.Models;
 
 namespace StatisticalSurveyQuestionnaire.Application.Features.Questions.Reorder;
 public sealed record ReorderQuestionsCommand

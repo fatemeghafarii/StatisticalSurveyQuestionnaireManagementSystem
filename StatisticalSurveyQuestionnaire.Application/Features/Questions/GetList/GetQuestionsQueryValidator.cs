@@ -11,12 +11,12 @@ public sealed class GetQuestionsQueryValidator
             .GreaterThan(0)
             .WithMessage("شناسه نسخه پرسشنامه باید بزرگ ‌تر از صفر باشد.");
 
-        RuleFor(x => x.PageNumber)
+        RuleFor(x => x.Pagination.PageNumber)
             .GreaterThan(0)
             .WithMessage(
                 "شماره صفحه باید بزرگ‌تر از صفر باشد.");
 
-        RuleFor(x => x.PageSize)
+        RuleFor(x => x.Pagination.PageSize)
             .InclusiveBetween(1, 100)
             .WithMessage(
                 "تعداد موارد هر صفحه باید بین ۱ تا ۱۰۰ باشد.");

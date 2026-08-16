@@ -1,0 +1,20 @@
+﻿namespace StatisticalSurveyQuestionnaire.Application.Features.QuestionnaireVersions.GetActive;
+
+public sealed class GetActiveQuestionnaireVersionResponse
+{
+    public int Id { get; init; }
+
+    public int QuestionnaireId { get; init; }
+
+    public int VersionNumber { get; init; }
+
+    public string Title { get; init; } = null!;
+
+    public DateTime EffectiveDate { get; init; }
+
+    public int StatusId { get; init; }
+
+    public string StatusCode { get; init; } = null!;
+
+    public bool IsActive { get; init; }
+}

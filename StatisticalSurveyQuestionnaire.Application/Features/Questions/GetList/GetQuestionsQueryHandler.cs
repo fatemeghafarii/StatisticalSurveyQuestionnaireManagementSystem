@@ -2,7 +2,7 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using StatisticalSurveyQuestionnaire.Application.Common.Interfaces;
-using StatisticalSurveyQuestionnaire.Application.Common.Results;
+using StatisticalSurveyQuestionnaire.Application.Common.Models;
 
 namespace StatisticalSurveyQuestionnaire.Application.Features.Questions.GetList;
 
@@ -35,9 +35,8 @@ public sealed class GetQuestionsQueryHandler
 
         var items = await query
             .OrderBy(x => x.Order)
-            .Skip(
-                (request.PageNumber - 1) * request.PageSize)
-            .Take(request.PageSize)
+            .Skip((request.Pagination.PageNumber - 1) * request.Pagination.PageSize)
+            .Take(request.Pagination.PageSize)
             .Select(x => new QuestionListItem
             {
                 Id = x.Id,
@@ -54,11 +53,13 @@ public sealed class GetQuestionsQueryHandler
         return Result<GetQuestionsResponse>
             .Success(new GetQuestionsResponse
             {
-                Items = items,
-                PageNumber = request.PageNumber,
-                PageSize = request.PageSize,
-                TotalCount = totalCount
+                Data = new PaginatedList<QuestionListItem>
+                { 
+                    Items = items,
+                    PageNumber = request.Pagination.PageNumber,
+                    PageSize = request.Pagination.PageSize,
+                    TotalCount = totalCount
+                }
             });
-
     }
 }

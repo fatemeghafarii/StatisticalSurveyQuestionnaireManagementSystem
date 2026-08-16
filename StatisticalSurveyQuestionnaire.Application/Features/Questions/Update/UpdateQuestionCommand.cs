@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using StatisticalSurveyQuestionnaire.Application.Common.Results;
+using StatisticalSurveyQuestionnaire.Application.Common.Models;
 
 namespace StatisticalSurveyQuestionnaire.Application.Features.Questions.Update;
 public sealed record UpdateQuestionCommand

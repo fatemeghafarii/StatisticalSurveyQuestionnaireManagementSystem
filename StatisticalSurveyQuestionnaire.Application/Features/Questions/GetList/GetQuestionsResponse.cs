@@ -1,16 +1,19 @@
-﻿namespace StatisticalSurveyQuestionnaire.Application.Features.Questions.GetList;
+﻿using StatisticalSurveyQuestionnaire.Application.Common.Models;
+
+namespace StatisticalSurveyQuestionnaire.Application.Features.Questions.GetList;
 
 public sealed class GetQuestionsResponse
 {
-    public IReadOnlyList<QuestionListItem> Items { get; init; } = new List<QuestionListItem>();
+    public PaginatedList<QuestionListItem> Data { get; init; } = null!;
+    //public IReadOnlyList<QuestionListItem> Items { get; init; } = new List<QuestionListItem>();
 
-    public int PageNumber { get; init; }
+    //public int PageNumber { get; init; }
 
-    public int PageSize { get; init; }
+    //public int PageSize { get; init; }
 
-    public int TotalCount { get; init; }
+    //public int TotalCount { get; init; }
 
-    public int TotalPages => (int)Math.Ceiling(TotalCount / (double)PageSize);
+    //public int TotalPages => (int)Math.Ceiling(TotalCount / (double)PageSize);
 }
 
 public sealed class QuestionListItem

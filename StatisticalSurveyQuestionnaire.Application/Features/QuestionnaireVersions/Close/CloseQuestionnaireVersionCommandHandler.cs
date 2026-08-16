@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using StatisticalSurveyQuestionnaire.Application.Common.Constants;
 using StatisticalSurveyQuestionnaire.Application.Common.Interfaces;
-using StatisticalSurveyQuestionnaire.Application.Common.Results;
+using StatisticalSurveyQuestionnaire.Application.Common.Models;
 
 namespace StatisticalSurveyQuestionnaire.Application.Features.QuestionnaireVersions.Close;
 
@@ -17,13 +17,13 @@ public sealed class CloseQuestionnaireVersionCommandHandler
 
     public async Task<Result<CloseQuestionnaireVersionResponse>> Handle(CloseQuestionnaireVersionCommand request, CancellationToken cancellationToken)
     {
-        var questionnaireVersion =
+        var version =
               await _context.QuestionnaireVersions
                   .SingleOrDefaultAsync(
                       x => x.Id == request.Id,
                       cancellationToken);
 
-        if (questionnaireVersion is null)
+        if (version is null)
         {
             return Result<CloseQuestionnaireVersionResponse>
                 .Failure(
@@ -43,7 +43,7 @@ public sealed class CloseQuestionnaireVersionCommandHandler
                     "وضعیت منتشر شده پیدا نشد.");
         }
 
-        if (questionnaireVersion.StatusId != publishedStatusType.Id)
+        if (version.StatusId != publishedStatusType.Id)
         {
             return Result<CloseQuestionnaireVersionResponse>
                 .Failure(
@@ -63,8 +63,8 @@ public sealed class CloseQuestionnaireVersionCommandHandler
                     "وضعیت بسته شده پیدا نشد.");
         }
 
-        questionnaireVersion.StatusId = closedStatus.Id;
-        questionnaireVersion.IsActive = false;
+        version.StatusId = closedStatus.Id;
+        version.IsActive = false;
 
         await _context.SaveChangesAsync(cancellationToken);
 
@@ -72,13 +72,13 @@ public sealed class CloseQuestionnaireVersionCommandHandler
             .Success(
                 new CloseQuestionnaireVersionResponse
                 {
-                    Id = questionnaireVersion.Id,
-                    QuestionnaireId = questionnaireVersion.Id,
-                    VersionNumber = questionnaireVersion.VersionNumber,
-                    Title = questionnaireVersion.Title,
-                    EffectiveDate = questionnaireVersion.EffectiveDate,
+                    Id = version.Id,
+                    QuestionnaireId = version.Id,
+                    VersionNumber = version.VersionNumber,
+                    Title = version.Title,
+                    EffectiveDate = version.EffectiveDate,
                     StatusId = closedStatus.Id,
-                    StatusTitle = closedStatus.Title,
+                    StatusCode = closedStatus.Code,
                     IsActive = closedStatus.IsActive,
                 });
     }

@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using StatisticalSurveyQuestionnaire.Application.Common.Interfaces;
-using StatisticalSurveyQuestionnaire.Application.Common.Results;
+using StatisticalSurveyQuestionnaire.Application.Common.Models;
 
 namespace StatisticalSurveyQuestionnaire.Application.Features.QuestionnaireVersions.GetById;
 
@@ -26,7 +26,7 @@ public sealed class GetQuestionnaireVersionByIdQueryHandler
                 Title = x.Title,
                 EffectiveDate = x.EffectiveDate,
                 StatusId = x.StatusId,
-                StatusTitle = x.Status.Title,
+                StatusCode = x.Status.Code,
                 IsActive = x.IsActive,
             })
             .SingleOrDefaultAsync(cancellationToken);

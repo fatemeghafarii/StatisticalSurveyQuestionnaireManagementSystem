@@ -14,7 +14,7 @@ public sealed class GetQuestionnaireVersionByIdResponse
     
     public int StatusId { get; init; }
     
-    public string StatusTitle { get; init; } = null!;
+    public string StatusCode { get; init; } = null!;
     
     public bool IsActive { get; init; }
 }

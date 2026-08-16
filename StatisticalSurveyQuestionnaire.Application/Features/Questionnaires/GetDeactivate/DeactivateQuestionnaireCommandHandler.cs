@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using StatisticalSurveyQuestionnaire.Application.Common.Interfaces;
-using StatisticalSurveyQuestionnaire.Application.Common.Results;
+using StatisticalSurveyQuestionnaire.Application.Common.Models;
 
-namespace StatisticalSurveyQuestionnaire.Application.Features.Questionnaires.Deactivate;
+namespace StatisticalSurveyQuestionnaire.Application.Features.Questionnaires.GetDeactivate;
 
 public sealed class DeactivateQuestionnaireCommandHandler
     : IRequestHandler<

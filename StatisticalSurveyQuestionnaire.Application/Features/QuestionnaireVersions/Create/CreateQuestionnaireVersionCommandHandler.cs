@@ -3,7 +3,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using StatisticalSurveyQuestionnaire.Application.Common.Constants;
 using StatisticalSurveyQuestionnaire.Application.Common.Interfaces;
-using StatisticalSurveyQuestionnaire.Application.Common.Results;
+using StatisticalSurveyQuestionnaire.Application.Common.Models;
 using StatisticalSurveyQuestionnaire.Domain.Entities;
 
 namespace StatisticalSurveyQuestionnaire.Application.Features.QuestionnaireVersions.Create;

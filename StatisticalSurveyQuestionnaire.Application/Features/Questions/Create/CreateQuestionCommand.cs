@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using StatisticalSurveyQuestionnaire.Application.Common.Results;
+using StatisticalSurveyQuestionnaire.Application.Common.Models;
 
 namespace StatisticalSurveyQuestionnaire.Application.Features.Questions.Create;
 public sealed record CreateQuestionCommand
