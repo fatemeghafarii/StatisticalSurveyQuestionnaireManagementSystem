@@ -12,6 +12,7 @@ public sealed class GetQuestionByIdQueryHandler
         Result<GetQuestionByIdResponse>>
 {
     private readonly IApplicationDbContext _context;
+
     public GetQuestionByIdQueryHandler(IApplicationDbContext context) => _context = context;
 
     public async Task<Result<GetQuestionByIdResponse>> Handle(GetQuestionByIdQuery request, CancellationToken cancellationToken)
@@ -23,10 +24,15 @@ public sealed class GetQuestionByIdQueryHandler
             .Select(x => new GetQuestionByIdResponse
             {
                 Id = x.Id,
+              
                 QuestionnaireVersionId = x.QuestionnaireVersionId,
+                
                 Text = x.Text,
+                
                 QuestionTypeId = x.QuestionTypeId,
+                
                 QuestionTypeTitle = x.QuestionType.Title,
+                
                 Order = x.Order
             })
             .SingleOrDefaultAsync(cancellationToken);

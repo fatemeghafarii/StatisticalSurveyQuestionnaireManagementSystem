@@ -42,11 +42,12 @@ public sealed class CreateQuestionnaireVersionCommandHandler
                     cancellationToken)
                 ?? 0;
 
-        var draftStatus = await _context.QuestionnaireVersionStatusTypes
-            .SingleOrDefaultAsync(
-                   x => x.Code == QuestionnaireVersionStatusCodes.Draft,
-                   //x => x.Code == "DRAFT",
-                cancellationToken);
+        var draftStatus = 
+            await _context.SurveyResponseStatusTypes
+                .SingleOrDefaultAsync(
+                    x => x.Code == QuestionnaireVersionStatusCodes.Draft,
+                    //x => x.Code == "DRAFT",
+                    cancellationToken);
 
         if (draftStatus is null)
         {
@@ -80,12 +81,21 @@ public sealed class CreateQuestionnaireVersionCommandHandler
                new CreateQuestionnaireVersionResponse
                {
                    Id = version.Id,
+
                    QuestionnaireId = version.QuestionnaireId,
+                   
                    VersionNumber = version.VersionNumber,
+                   
                    Title = version.Title,
+                   
                    EffectiveDate = version.EffectiveDate,
+                   
                    StatusId = draftStatus.Id,
+                   
                    StatusCode = draftStatus.Code,
+                   
+                   StatusTitle = draftStatus.Title, 
+                   
                    IsActive = version.IsActive
                });
     }

@@ -11,6 +11,7 @@ public sealed class GetQuestionTypesQueryHandler
         Result<GetQuestionTypesResponse>>
 {
     private readonly IApplicationDbContext _context;
+
     public GetQuestionTypesQueryHandler(IApplicationDbContext context) => _context = context;
 
     public async Task<Result<GetQuestionTypesResponse>> Handle(GetQuestionTypesQuery request, CancellationToken cancellationToken)
@@ -23,9 +24,12 @@ public sealed class GetQuestionTypesQueryHandler
             .Select(x => new QuestionTypeItem
             {
                 Id = x.Id,
+               
                 Title = x.Title,
+                
                 Order = x.Order,
-                IsActive = x.IsActive,
+                
+                IsActive = x.IsActive
             })
             .ToListAsync(cancellationToken); ;
 

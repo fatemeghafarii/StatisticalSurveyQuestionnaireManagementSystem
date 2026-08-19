@@ -14,7 +14,9 @@ public sealed class CreateQuestionOptionCommandHandler
         Result<CreateQuestionOptionResponse>>
 {
     private readonly IApplicationDbContext _context;
+
     public CreateQuestionOptionCommandHandler(IApplicationDbContext context) => _context = context;
+
     public async Task<Result<CreateQuestionOptionResponse>> Handle(CreateQuestionOptionCommand request, CancellationToken cancellationToken)
     {
         var question =
@@ -67,8 +69,11 @@ public sealed class CreateQuestionOptionCommandHandler
             new CreateQuestionOptionResponse
             {
                 Id = option.Id,
+               
                 QuestionId = option.QuestionId,
+                
                 Text = option.Text,
+                
                 Order = question.Order
             });
     }

@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using StatisticalSurveyQuestionnaire.Application.Common.Models;
 
-namespace StatisticalSurveyQuestionnaire.Application.Features.Questionnaires.GetActivate;
+namespace StatisticalSurveyQuestionnaire.Application.Features.Questionnaires.Activate;
 public sealed record class ActivateQuestionnaireCommand
 (
     int QuestionnaireId

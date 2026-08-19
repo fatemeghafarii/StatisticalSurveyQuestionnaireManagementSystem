@@ -12,6 +12,7 @@ public sealed class GetQuestionsQueryHandler
         Result<GetQuestionsResponse>>
 {
     private readonly IApplicationDbContext _context;
+
     public GetQuestionsQueryHandler(IApplicationDbContext context) => _context = context;
 
     public async Task<Result<GetQuestionsResponse>> Handle(GetQuestionsQuery request, CancellationToken cancellationToken)
@@ -40,11 +41,16 @@ public sealed class GetQuestionsQueryHandler
             .Select(x => new QuestionItem
             {
                 Id = x.Id,
+               
                 QuestionnaireVersionId = x.QuestionnaireVersionId,
+                
                 Text = x.Text,
+                
                 QuestionTypeId = x.QuestionTypeId,
+                
                 QuestionTypeTitle = x.QuestionType.Title,
-                Order = x.Order,
+                
+                Order = x.Order
             })
             .ToListAsync(cancellationToken);
 
@@ -56,8 +62,11 @@ public sealed class GetQuestionsQueryHandler
                 Data = new PaginatedList<QuestionItem>
                 { 
                     Items = items,
+                   
                     PageNumber = request.Pagination.PageNumber,
+                    
                     PageSize = request.Pagination.PageSize,
+                    
                     TotalCount = totalCount
                 }
             });

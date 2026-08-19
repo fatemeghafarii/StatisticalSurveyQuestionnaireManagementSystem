@@ -12,7 +12,9 @@ public sealed class DeleteQuestionOptionCommandHandler
         Result<bool>>
 {
     private readonly IApplicationDbContext _context;
+
     public DeleteQuestionOptionCommandHandler(IApplicationDbContext context) => _context = context;
+
     public async Task<Result<bool>> Handle(DeleteQuestionOptionCommand request, CancellationToken cancellationToken)
     {
         var option =

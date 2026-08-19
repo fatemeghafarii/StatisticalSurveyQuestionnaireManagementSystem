@@ -12,7 +12,9 @@ public sealed class UpdateQuestionOptionCommandHandler
         Result<UpdateQuestionOptionResponse>>
 {
     private readonly IApplicationDbContext _context;
+
     public UpdateQuestionOptionCommandHandler(IApplicationDbContext context) => _context = context;
+
     public async Task<Result<UpdateQuestionOptionResponse>> Handle(UpdateQuestionOptionCommand request, CancellationToken cancellationToken)
     {
         var option =
@@ -46,9 +48,12 @@ public sealed class UpdateQuestionOptionCommandHandler
                 new UpdateQuestionOptionResponse
                 {
                     Id = option.Id,
+                    
                     QuestionId = option.QuestionId,
+                    
                     Text = option.Text,
-                    Order = option.Order,
+                    
+                    Order = option.Order
                 });
     }
 }

@@ -24,7 +24,7 @@ public class SurveyResponseStatusTypeSeeder
             },
             new()
             {
-                Code = "NOT_STARTED",
+                Code = "IN_PROGRESS",
                 Title = "در حال انجام",
                 Order = 2,
                 IsActive = true
@@ -38,7 +38,7 @@ public class SurveyResponseStatusTypeSeeder
             },
             new()
             {
-                Code = "COMPLETED",
+                Code = "CANCELED",
                 Title = "لغو شده",
                 Order = 4,
                 IsActive = true

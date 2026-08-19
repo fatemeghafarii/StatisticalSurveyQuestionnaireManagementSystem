@@ -44,13 +44,22 @@ public sealed class GetQuestionnaireVersionsQueryHandler
             .Select(x => new QuestionnaireVersionItem
             {
                 Id = x.Id,
+               
                 QuestionnaireId = x.QuestionnaireId,
+                
                 VersionNumber = x.VersionNumber,
+                
                 Title = x.Title,
+                
                 EffectiveDate = x.EffectiveDate,
+                
                 StatusId = x.StatusId,
+                
                 StatusCode = x.Status.Code,
-                IsActive = x.IsActive,
+                
+                StatusTitle = x.Title,
+                
+                IsActive = x.IsActive
             })
             .ToListAsync(cancellationToken); ;
 
@@ -62,8 +71,11 @@ public sealed class GetQuestionnaireVersionsQueryHandler
                 Data = new PaginatedList<QuestionnaireVersionItem>
                 {
                     Items = items,
+                    
                     PageNumber = request.Pagination.PageNumber,
+                    
                     PageSize = request.Pagination.PageSize,
+                    
                     TotalCount = totalCount
                 }
             });

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using StatisticalSurveyQuestionnaire.Application.Common.Interfaces;
 using StatisticalSurveyQuestionnaire.Application.Common.Models;
 
-namespace StatisticalSurveyQuestionnaire.Application.Features.Questionnaires.GetDeactivate;
+namespace StatisticalSurveyQuestionnaire.Application.Features.Questionnaires.Deactivate;
 
 public sealed class DeactivateQuestionnaireCommandHandler
     : IRequestHandler<

@@ -24,27 +24,18 @@
     <Folder Include="Features\Households\GetById\" />
     <Folder Include="Features\Households\GetList\" />
     <Folder Include="Features\Households\Update\" />
-    <Folder Include="Features\Questionnaires\Common\" />
-    <Folder Include="Features\Questionnaires\Delete\" />
-    <Folder Include="Features\Questionnaires\GetById\" />
-    <Folder Include="Features\Questionnaires\Update\" />
-    <Folder Include="Features\QuestionOptions\Common\" />
     <Folder Include="Features\QuestionOptions\Reorder\" />
-    <Folder Include="Features\Reports\Common\" />
     <Folder Include="Features\Reports\Delete\" />
     <Folder Include="Features\Reports\GetById\" />
     <Folder Include="Features\Reports\GetList\" />
     <Folder Include="Features\Reports\Update\" />
-    <Folder Include="Features\SurveyPeriods\Common\" />
     <Folder Include="Features\SurveyPeriods\Delete\" />
     <Folder Include="Features\SurveyPeriods\GetById\" />
     <Folder Include="Features\SurveyPeriods\GetList\" />
     <Folder Include="Features\SurveyPeriods\Update\" />
-    <Folder Include="Features\SurveyResponses\Common\" />
     <Folder Include="Features\SurveyResponses\Delete\" />
     <Folder Include="Features\SurveyResponses\GetById\" />
     <Folder Include="Features\SurveyResponses\GetList\" />
-    <Folder Include="Features\SurveyResponses\Create\" />
     <Folder Include="Features\SurveyResponses\Update\" />
     <PackageReference Include="FluentValidation" Version="12.1.1" />
 	  <PackageReference Include="MediatR" Version="14.2.0" />

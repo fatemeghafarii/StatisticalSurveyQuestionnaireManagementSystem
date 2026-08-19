@@ -13,6 +13,7 @@ public sealed class CreateQuestionCommandHandler
         Result<CreateQuestionResponse>>
 {
     private readonly IApplicationDbContext _context;
+
     public CreateQuestionCommandHandler(IApplicationDbContext context) => _context = context;
 
     public async Task<Result<CreateQuestionResponse>> Handle(CreateQuestionCommand request, CancellationToken cancellationToken)
@@ -64,8 +65,11 @@ public sealed class CreateQuestionCommandHandler
         var question = new Question
         {
             QuestionnaireVersionId = request.QuestionTypeId,
+            
             Text = request.Text,
+            
             QuestionTypeId = request.QuestionTypeId,
+            
             Order = lastOrder + 1
         };
 
@@ -81,9 +85,13 @@ public sealed class CreateQuestionCommandHandler
             new CreateQuestionResponse
             {
                 Id = question.Id,
+               
                 QuestionnaireVersionId = question.QuestionnaireVersionId,
+                
                 Text = question.Text,
+                
                 QuestionTypeId = question.QuestionTypeId,
+                
                 Order = question.Order
 
             });

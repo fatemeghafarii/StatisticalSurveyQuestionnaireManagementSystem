@@ -38,8 +38,11 @@ public sealed class CreateQuestionnaireCommandHandler
         var questionnaire = new Questionnaire
         {
             Title = request.Title,
+          
             Description = request.Description,
+            
             Code = _codeGenerator.Generate(CodePrefix.Questionnaire),
+            
             IsActive = false
         };
 
@@ -53,8 +56,11 @@ public sealed class CreateQuestionnaireCommandHandler
                 new CreateQuestionnaireResponse
                 {
                     Id = questionnaire.Id,
+                   
                     Title = questionnaire.Title,
+                    
                     Code = questionnaire.Code,
+                    
                     IsActive = questionnaire.IsActive
                 });
     }

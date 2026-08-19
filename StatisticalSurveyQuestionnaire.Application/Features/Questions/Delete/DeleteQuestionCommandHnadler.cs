@@ -12,6 +12,7 @@ namespace StatisticalSurveyQuestionnaire.Application.Features.Questions.Delete
             Result<bool>>
     {
         private readonly IApplicationDbContext _context;
+
         public DeleteQuestionCommandHnadler(IApplicationDbContext context) => _context = context;
 
         public async Task<Result<bool>> Handle(DeleteQuestionCommand request, CancellationToken cancellationToken)

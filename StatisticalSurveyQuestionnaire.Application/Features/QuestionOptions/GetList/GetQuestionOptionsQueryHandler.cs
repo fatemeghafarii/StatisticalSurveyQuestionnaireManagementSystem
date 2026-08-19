@@ -12,6 +12,7 @@ public sealed class GetQuestionOptionsQueryHandler
             Result<GetQuestionOptionsResponse>>
 {
     private readonly IApplicationDbContext _context;
+
     public GetQuestionOptionsQueryHandler(IApplicationDbContext context) => _context = context;
 
     public async Task<Result<GetQuestionOptionsResponse>> Handle(GetQuestionOptionsQuery request, CancellationToken cancellationToken)
@@ -37,7 +38,9 @@ public sealed class GetQuestionOptionsQueryHandler
             .Select(x => new QuestionOptionItem
             {
                 Id = x.Id,
+                
                 Text = x.Text,
+                
                 Order = x.Order
             })
             .ToListAsync(cancellationToken);
@@ -46,6 +49,7 @@ public sealed class GetQuestionOptionsQueryHandler
             .Success(new GetQuestionOptionsResponse
             {
                 QuestionId = request.QuestionId,
+                
                 Items = items
             });
     }

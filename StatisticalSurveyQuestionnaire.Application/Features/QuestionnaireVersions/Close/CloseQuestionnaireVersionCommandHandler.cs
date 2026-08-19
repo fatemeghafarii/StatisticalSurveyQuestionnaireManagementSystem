@@ -73,13 +73,22 @@ public sealed class CloseQuestionnaireVersionCommandHandler
                 new CloseQuestionnaireVersionResponse
                 {
                     Id = version.Id,
+                    
                     QuestionnaireId = version.Id,
+                    
                     VersionNumber = version.VersionNumber,
+                    
                     Title = version.Title,
+                    
                     EffectiveDate = version.EffectiveDate,
+                    
                     StatusId = closedStatus.Id,
+                    
                     StatusCode = closedStatus.Code,
-                    IsActive = closedStatus.IsActive,
+                    
+                    StatusTitle = closedStatus.Title,   
+                    
+                    IsActive = closedStatus.IsActive
                 });
     }
 }

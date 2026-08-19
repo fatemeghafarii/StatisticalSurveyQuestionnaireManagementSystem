@@ -11,7 +11,9 @@ public sealed class GetQuestionnaireVersionByIdQueryHandler
         Result<GetQuestionnaireVersionByIdResponse>>
 {
     private readonly IApplicationDbContext _context;
+
     public GetQuestionnaireVersionByIdQueryHandler(IApplicationDbContext context) => _context = context;
+
     public async Task<Result<GetQuestionnaireVersionByIdResponse>> Handle(GetQuestionnaireVersionByIdQuery request, CancellationToken cancellationToken)
     {
         var version =
@@ -21,13 +23,22 @@ public sealed class GetQuestionnaireVersionByIdQueryHandler
             .Select(x => new GetQuestionnaireVersionByIdResponse
             {
                 Id = x.Id,
+                
                 QuestionnaireId = x.QuestionnaireId,
+                
                 VersionNumber = x.VersionNumber,
+                
                 Title = x.Title,
+                
                 EffectiveDate = x.EffectiveDate,
+                
                 StatusId = x.StatusId,
+                
                 StatusCode = x.Status.Code,
-                IsActive = x.IsActive,
+                
+                StatusTitle = x.Title,
+                
+                IsActive = x.IsActive
             })
             .SingleOrDefaultAsync(cancellationToken);
 

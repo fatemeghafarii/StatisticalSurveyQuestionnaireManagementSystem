@@ -19,7 +19,5 @@ public class Questionnaire: BaseEntity<int>
     // فعال یا غیرفعال بودن
     public bool IsActive { get; set; }
     
-    public ICollection<SurveyResponse> SurveyResponses { get; set; } = new List<SurveyResponse>();
-    
     public ICollection<QuestionnaireVersion> QuestionnaireVersions { get; set; } = new List<QuestionnaireVersion>();
 }

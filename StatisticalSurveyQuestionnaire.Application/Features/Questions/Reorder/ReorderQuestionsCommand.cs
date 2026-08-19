@@ -19,6 +19,7 @@ public sealed class ReorderQuestionsCommandHandler
         Result<GetQuestionsResponse>>
 {
     private readonly IApplicationDbContext _context;
+
     public ReorderQuestionsCommandHandler(IApplicationDbContext context) => _context = context;
 
     public async Task<Result<GetQuestionsResponse>> Handle(ReorderQuestionsCommand request, CancellationToken cancellationToken)
