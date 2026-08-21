@@ -24,6 +24,6 @@ public static class DependencyInjection
 
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehavior<,>));
 
-        return null;
+        return services;
     }
 }

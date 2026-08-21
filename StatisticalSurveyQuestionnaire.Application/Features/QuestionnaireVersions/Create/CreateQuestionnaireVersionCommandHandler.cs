@@ -44,7 +44,7 @@ public sealed class CreateQuestionnaireVersionCommandHandler
                 ?? 0;
 
         var draftStatusType = 
-            await _context.SurveyResponseStatusTypes
+            await _context.QuestionnaireVersionStatusTypes
                 .AsNoTracking()
                 .SingleOrDefaultAsync(
                     x => x.Code == QuestionnaireVersionStatusCodes.Draft,

@@ -33,7 +33,7 @@ public sealed class DeleteQuestionOptionCommandHandler
                     "گزینه مورد نظر پیدا نشد.");
         }
 
-        if (option.Question.QuestionnaireVersion.Status.Code == QuestionnaireVersionStatusCodes.Draft)
+        if (option.Question.QuestionnaireVersion.Status.Code != QuestionnaireVersionStatusCodes.Draft)
         {
             return Result<bool>
             .Failure(

@@ -29,7 +29,7 @@ public sealed class CreateQuestionCommandHandler
         var version =
             await _context.QuestionnaireVersions
                 .AsNoTracking()
-                .Include(x => x.Status)
+                //.Include(x => x.Status)
                 .SingleOrDefaultAsync(
                     x => x.Id == request.QuestionnaireVersionId,
                     cancellationToken);

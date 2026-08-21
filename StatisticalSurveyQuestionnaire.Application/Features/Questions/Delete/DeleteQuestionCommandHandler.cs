@@ -6,14 +6,14 @@ using StatisticalSurveyQuestionnaire.Application.Common.Models;
 
 namespace StatisticalSurveyQuestionnaire.Application.Features.Questions.Delete
 {
-    public sealed class DeleteQuestionCommandHnadler
+    public sealed class DeleteQuestionCommandHandler
         : IRequestHandler<
             DeleteQuestionCommand,
             Result<bool>>
     {
         private readonly IApplicationDbContext _context;
 
-        public DeleteQuestionCommandHnadler(IApplicationDbContext context) => 
+        public DeleteQuestionCommandHandler(IApplicationDbContext context) => 
             _context = context;
 
         public async Task<Result<bool>> Handle(DeleteQuestionCommand request, CancellationToken cancellationToken)
@@ -33,7 +33,7 @@ namespace StatisticalSurveyQuestionnaire.Application.Features.Questions.Delete
                         "سوال مورد نظر پیدا نشد.");
             }
 
-            if(question.QuestionnaireVersion.Status.Code == QuestionnaireVersionStatusCodes.Draft)
+            if(question.QuestionnaireVersion.Status.Code != QuestionnaireVersionStatusCodes.Draft)
             {
                 return Result<bool>
                 .Failure(

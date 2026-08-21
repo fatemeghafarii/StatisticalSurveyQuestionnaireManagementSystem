@@ -34,7 +34,7 @@ public sealed class GetQuestionOptionsQueryHandler
         var items =
             await _context.QuestionOptions
             .AsNoTracking()
-            .Where(x => x.Id == request.QuestionId)
+            .Where(x => x.QuestionId == request.QuestionId)
             .OrderBy(x => x.Order)
             .Select(x => new QuestionOptionItem
             {

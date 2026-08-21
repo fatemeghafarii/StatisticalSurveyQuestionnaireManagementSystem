@@ -4,7 +4,7 @@ using StatisticalSurveyQuestionnaire.Application.Features.QuestionOptions.Create
 namespace StatisticalSurveyQuestionnaire.Application.Features.QuestionOptions.GetList;
 
 public sealed class GetQuestionOptionsQueryValidator
-    : AbstractValidator<CreateQuestionOptionCommand>
+    : AbstractValidator<GetQuestionOptionsQuery>
 {
     public GetQuestionOptionsQueryValidator()
     {

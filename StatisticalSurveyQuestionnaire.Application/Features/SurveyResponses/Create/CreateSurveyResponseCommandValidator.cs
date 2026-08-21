@@ -3,7 +3,7 @@
 namespace StatisticalSurveyQuestionnaire.Application.Features.SurveyResponses.Create;
 
 public sealed class CreateSurveyResponseCommandValidator
-    : AbstractValidator<CreateSurveyResponseResponse>
+    : AbstractValidator<CreateSurveyResponseCommand>
 {
     public CreateSurveyResponseCommandValidator()
     {
@@ -17,7 +17,7 @@ public sealed class CreateSurveyResponseCommandValidator
                 .WithMessage(
                     "شناسه نسخه پرسشنامه باید بزرگ‌تر از صفر باشد.");
 
-        RuleFor(x => x.ResponseStatusId)
+        RuleFor(x => x.SurveyPeriodId)
                 .GreaterThan(0)
                 .WithMessage(
                     "شناسه دوره ی آماری باید بزرگ‌تر از صفر باشد.");

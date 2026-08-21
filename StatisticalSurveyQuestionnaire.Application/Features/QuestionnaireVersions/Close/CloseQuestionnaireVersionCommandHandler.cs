@@ -30,6 +30,13 @@ public sealed class CloseQuestionnaireVersionCommandHandler
                     "نسخه مورد نظر پیدا نشد.");
         }
 
+        if (!version.IsActive)
+        {
+            return Result<CloseQuestionnaireVersionResponse>
+                .Failure(
+                    "نسخه قبلا بسته شده است.");
+        }
+
         var publishedStatusType =
             await _context.QuestionnaireVersionStatusTypes
                 .SingleOrDefaultAsync(
