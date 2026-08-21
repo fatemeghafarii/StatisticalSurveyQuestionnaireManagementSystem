@@ -13,7 +13,8 @@ public sealed class GetQuestionOptionsQueryHandler
 {
     private readonly IApplicationDbContext _context;
 
-    public GetQuestionOptionsQueryHandler(IApplicationDbContext context) => _context = context;
+    public GetQuestionOptionsQueryHandler(IApplicationDbContext context) => 
+        _context = context;
 
     public async Task<Result<GetQuestionOptionsResponse>> Handle(GetQuestionOptionsQuery request, CancellationToken cancellationToken)
     {

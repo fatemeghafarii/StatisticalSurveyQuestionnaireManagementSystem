@@ -13,7 +13,8 @@ public sealed class GetQuestionnaireByIdQueryHandler
 {
     private readonly IApplicationDbContext _context;
 
-    public GetQuestionnaireByIdQueryHandler(IApplicationDbContext context) => _context = context;
+    public GetQuestionnaireByIdQueryHandler(IApplicationDbContext context) => 
+        _context = context;
 
     public async Task<Result<GetQuestionnaireByIdResponse>> Handle(GetQuestionnaireByIdQuery request, CancellationToken cancellationToken)
     {
@@ -33,7 +34,7 @@ public sealed class GetQuestionnaireByIdQueryHandler
                 
                 IsActive = x.IsActive,
                 
-                CreatedDate = x.CreateDate,
+                CreatedAt = x.CreatedAt,
                 
                 Versions = x.QuestionnaireVersions
                     .OrderByDescending(v => v.VersionNumber)
@@ -50,6 +51,8 @@ public sealed class GetQuestionnaireByIdQueryHandler
                         StatusId = v.StatusId,
                         
                         StatusCode = v.Status.Code,
+
+                        StatusTitle = v.Status.Title,   
                         
                         IsActive = v.IsActive
                     })

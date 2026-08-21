@@ -10,7 +10,7 @@ public sealed class GetQuestionnaireByIdResponse
 
     public bool IsActive { get; init; }
 
-    public DateTime CreatedDate { get; init; }
+    public DateTime CreatedAt { get; init; }
 
     public IReadOnlyList<QuestionnaireVersionItem> Versions { get; init; } = new List<QuestionnaireVersionItem>();
 }
@@ -28,6 +28,8 @@ public sealed class QuestionnaireVersionItem
     public int StatusId { get; init; }
 
     public string StatusCode { get; init; } = null!;
+
+    public string StatusTitle { get; init; } = null!;
 
     public bool IsActive { get; init; }
 }

@@ -17,6 +17,7 @@ public class Questionnaire: BaseEntity<int>
     public string Code { get; set; } = null!;
     
     // فعال یا غیرفعال بودن
+    //TODO: به نظرم حذفش کنیم
     public bool IsActive { get; set; }
     
     public ICollection<QuestionnaireVersion> QuestionnaireVersions { get; set; } = new List<QuestionnaireVersion>();

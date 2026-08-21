@@ -12,7 +12,8 @@ public sealed class ActivateQuestionnaireCommandHandler
 {
     private readonly IApplicationDbContext _context;
 
-    public ActivateQuestionnaireCommandHandler(IApplicationDbContext context) => _context = context;
+    public ActivateQuestionnaireCommandHandler(IApplicationDbContext context) => 
+        _context = context;
 
     public async Task<Result> Handle(ActivateQuestionnaireCommand request, CancellationToken cancellationToken)
     {
@@ -21,7 +22,6 @@ public sealed class ActivateQuestionnaireCommandHandler
                         .SingleOrDefaultAsync(
                             x => x.Id == request.QuestionnaireId,
                             cancellationToken);
-
 
         if (questionnaire is null)
         {

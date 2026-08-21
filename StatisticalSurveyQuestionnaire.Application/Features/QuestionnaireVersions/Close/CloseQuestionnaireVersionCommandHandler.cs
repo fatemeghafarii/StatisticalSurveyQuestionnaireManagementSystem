@@ -50,20 +50,20 @@ public sealed class CloseQuestionnaireVersionCommandHandler
                     "فقط نسخه منتشر شده قابل بستن است.");
         }
 
-        var closedStatus =
+        var closedStatusType =
             await _context.QuestionnaireVersionStatusTypes
                 .SingleOrDefaultAsync(
                     x => x.Code == QuestionnaireVersionStatusCodes.Closed,
                     cancellationToken);
 
-        if (closedStatus is null)
+        if (closedStatusType is null)
         {
             return Result<CloseQuestionnaireVersionResponse>
                 .Failure(
                     "وضعیت بسته شده پیدا نشد.");
         }
 
-        version.StatusId = closedStatus.Id;
+        version.StatusId = closedStatusType.Id;
         version.IsActive = false;
 
         await _context.SaveChangesAsync(cancellationToken);
@@ -74,7 +74,7 @@ public sealed class CloseQuestionnaireVersionCommandHandler
                 {
                     Id = version.Id,
                     
-                    QuestionnaireId = version.Id,
+                    QuestionnaireId = version.QuestionnaireId,
                     
                     VersionNumber = version.VersionNumber,
                     
@@ -82,13 +82,13 @@ public sealed class CloseQuestionnaireVersionCommandHandler
                     
                     EffectiveDate = version.EffectiveDate,
                     
-                    StatusId = closedStatus.Id,
+                    StatusId = closedStatusType.Id,
                     
-                    StatusCode = closedStatus.Code,
+                    StatusCode = closedStatusType.Code,
                     
-                    StatusTitle = closedStatus.Title,   
+                    StatusTitle = closedStatusType.Title,   
                     
-                    IsActive = closedStatus.IsActive
+                    IsActive = version.IsActive
                 });
     }
 }

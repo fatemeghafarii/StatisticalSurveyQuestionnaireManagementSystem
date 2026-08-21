@@ -17,5 +17,5 @@ public sealed class QuestionnaireItem
 
     public bool IsActive { get; init; }
 
-    public DateTime CreatedDate { get; init; }
+    public DateTime CreatedAt { get; init; }
 }

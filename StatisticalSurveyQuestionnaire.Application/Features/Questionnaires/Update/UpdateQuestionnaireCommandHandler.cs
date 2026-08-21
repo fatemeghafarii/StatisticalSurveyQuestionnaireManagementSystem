@@ -12,14 +12,16 @@ public sealed class UpdateQuestionnaireCommandHandler
 {
     private readonly IApplicationDbContext _context;
 
-    public UpdateQuestionnaireCommandHandler(IApplicationDbContext context) => _context = context;
+    public UpdateQuestionnaireCommandHandler(IApplicationDbContext context) => 
+        _context = context;
 
     public async Task<Result<UpdateQuestionnaireResponse>> Handle(UpdateQuestionnaireCommand request, CancellationToken cancellationToken)
     {
         var questionnaire =
             await _context.Questionnaires
-                .SingleOrDefaultAsync(x => x.Id == request.Id,
-                cancellationToken);
+                .SingleOrDefaultAsync(
+                    x => x.Id == request.Id,
+                    cancellationToken);
 
         if (questionnaire is null)
         {

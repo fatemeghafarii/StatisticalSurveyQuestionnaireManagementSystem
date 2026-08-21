@@ -15,7 +15,8 @@ public sealed class CreateQuestionnaireVersionCommandHandler
 {
     private readonly IApplicationDbContext _context;
 
-    public CreateQuestionnaireVersionCommandHandler(IApplicationDbContext context) => _context = context;
+    public CreateQuestionnaireVersionCommandHandler(IApplicationDbContext context) => 
+        _context = context;
     
     public async Task<Result<CreateQuestionnaireVersionResponse>> Handle(CreateQuestionnaireVersionCommand request, CancellationToken cancellationToken)
     {
@@ -42,18 +43,18 @@ public sealed class CreateQuestionnaireVersionCommandHandler
                     cancellationToken)
                 ?? 0;
 
-        var draftStatus = 
+        var draftStatusType = 
             await _context.SurveyResponseStatusTypes
+                .AsNoTracking()
                 .SingleOrDefaultAsync(
                     x => x.Code == QuestionnaireVersionStatusCodes.Draft,
-                    //x => x.Code == "DRAFT",
                     cancellationToken);
 
-        if (draftStatus is null)
+        if (draftStatusType is null)
         {
             return Result<CreateQuestionnaireVersionResponse>
                 .Failure(
-                    "وضعیت پیش ‌نویس پرسشنامه پیدا نشد.");
+                    "وضعیت پیش ‌نویس نسخه ی پرسشنامه پیدا نشد.");
         }
 
         var version = new QuestionnaireVersion
@@ -66,7 +67,7 @@ public sealed class CreateQuestionnaireVersionCommandHandler
 
             EffectiveDate = request.EffectiveDate,
             
-            StatusId = draftStatus.Id,
+            StatusId = draftStatusType.Id,
 
             IsActive = false
         };
@@ -90,11 +91,11 @@ public sealed class CreateQuestionnaireVersionCommandHandler
                    
                    EffectiveDate = version.EffectiveDate,
                    
-                   StatusId = draftStatus.Id,
+                   StatusId = draftStatusType.Id,
                    
-                   StatusCode = draftStatus.Code,
+                   StatusCode = draftStatusType.Code,
                    
-                   StatusTitle = draftStatus.Title, 
+                   StatusTitle = draftStatusType.Title, 
                    
                    IsActive = version.IsActive
                });

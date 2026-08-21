@@ -13,29 +13,30 @@ public sealed class GetQuestionByIdQueryHandler
 {
     private readonly IApplicationDbContext _context;
 
-    public GetQuestionByIdQueryHandler(IApplicationDbContext context) => _context = context;
+    public GetQuestionByIdQueryHandler(IApplicationDbContext context) => 
+        _context = context;
 
     public async Task<Result<GetQuestionByIdResponse>> Handle(GetQuestionByIdQuery request, CancellationToken cancellationToken)
     {
         var question =
             await _context.Questions
-            .AsNoTracking()
-            .Where(x => x.Id == request.Id)
-            .Select(x => new GetQuestionByIdResponse
-            {
-                Id = x.Id,
-              
-                QuestionnaireVersionId = x.QuestionnaireVersionId,
-                
-                Text = x.Text,
-                
-                QuestionTypeId = x.QuestionTypeId,
-                
-                QuestionTypeTitle = x.QuestionType.Title,
-                
-                Order = x.Order
-            })
-            .SingleOrDefaultAsync(cancellationToken);
+                .AsNoTracking()
+                .Where(x => x.Id == request.Id)
+                .Select(x => new GetQuestionByIdResponse
+                {
+                    Id = x.Id,
+                  
+                    QuestionnaireVersionId = x.QuestionnaireVersionId,
+                    
+                    Text = x.Text,
+                    
+                    QuestionTypeId = x.QuestionTypeId,
+                    
+                    QuestionTypeTitle = x.QuestionType.Title,
+                    
+                    Order = x.Order
+                })
+                .SingleOrDefaultAsync(cancellationToken);
 
         if (question is null)
         {

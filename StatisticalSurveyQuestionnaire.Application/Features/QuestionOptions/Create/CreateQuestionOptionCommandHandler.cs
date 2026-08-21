@@ -15,16 +15,19 @@ public sealed class CreateQuestionOptionCommandHandler
 {
     private readonly IApplicationDbContext _context;
 
-    public CreateQuestionOptionCommandHandler(IApplicationDbContext context) => _context = context;
+    public CreateQuestionOptionCommandHandler(IApplicationDbContext context) =>
+        _context = context;
 
     public async Task<Result<CreateQuestionOptionResponse>> Handle(CreateQuestionOptionCommand request, CancellationToken cancellationToken)
     {
         var question =
             await _context.Questions
-            .Include(x => x.QuestionnaireVersion)
-            .ThenInclude(x => x.Status)
-                .SingleOrDefaultAsync(x => x.Id == request.QuestionId,
-                cancellationToken);
+                .AsNoTracking()
+                .Include(x => x.QuestionnaireVersion)
+                .ThenInclude(x => x.Status)
+                .SingleOrDefaultAsync(x =>
+                    x.Id == request.QuestionId,
+                    cancellationToken);
 
         if (question is null)
         {
@@ -33,7 +36,8 @@ public sealed class CreateQuestionOptionCommandHandler
                 "سوال مورد نظر پیدا نشد.");
         }
 
-        if (question.QuestionnaireVersion.Status.Code != QuestionnaireVersionStatusCodes.Draft)
+        if (question.QuestionnaireVersion.Status.Code 
+            != QuestionnaireVersionStatusCodes.Draft)
         {
             return Result<CreateQuestionOptionResponse>
                 .Failure(
@@ -53,7 +57,7 @@ public sealed class CreateQuestionOptionCommandHandler
         var option = new QuestionOption
         {
             QuestionId = request.QuestionId,
-            Text = question.Text,
+            Text = request.Text,
             Order = lastOrder + 1
         };
 
@@ -66,15 +70,15 @@ public sealed class CreateQuestionOptionCommandHandler
 
         return Result<CreateQuestionOptionResponse>
             .Success(
-            new CreateQuestionOptionResponse
-            {
-                Id = option.Id,
-               
-                QuestionId = option.QuestionId,
-                
-                Text = option.Text,
-                
-                Order = question.Order
-            });
+                new CreateQuestionOptionResponse
+                {
+                    Id = option.Id,
+                   
+                    QuestionId = option.QuestionId,
+                    
+                    Text = option.Text,
+                    
+                    Order = option.Order
+                });
     }
 }

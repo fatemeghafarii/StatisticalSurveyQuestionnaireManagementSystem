@@ -12,7 +12,8 @@ public sealed class DeleteQuestionnaireCommandHandler
 {
     private readonly IApplicationDbContext _context;
 
-    public DeleteQuestionnaireCommandHandler(IApplicationDbContext context) => _context = context;
+    public DeleteQuestionnaireCommandHandler(IApplicationDbContext context) => 
+        _context = context;
 
     public async Task<Result<bool>> Handle(DeleteQuestionnaireCommand request, CancellationToken cancellationToken)
     {
@@ -21,7 +22,6 @@ public sealed class DeleteQuestionnaireCommandHandler
             .SingleOrDefaultAsync(
                 x => x.Id == request.Id,
                 cancellationToken);
-
 
         if (questionnaire is null)
         {
@@ -37,14 +37,14 @@ public sealed class DeleteQuestionnaireCommandHandler
                     "پرسشنامه قبلاً حذف شده است.");
         }
 
-        var hasVersions =
+        var versionExists =
                 await _context.QuestionnaireVersions
                     .AnyAsync(
                         x => x.QuestionnaireId == request.Id &&
                         x.IsActive,
                         cancellationToken);
 
-        if (hasVersions)
+        if (versionExists)
         {
             return Result<bool>
                 .Failure(

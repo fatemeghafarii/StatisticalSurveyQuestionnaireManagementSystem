@@ -13,17 +13,18 @@ public sealed class GetQuestionsQueryHandler
 {
     private readonly IApplicationDbContext _context;
 
-    public GetQuestionsQueryHandler(IApplicationDbContext context) => _context = context;
+    public GetQuestionsQueryHandler(IApplicationDbContext context) => 
+        _context = context;
 
     public async Task<Result<GetQuestionsResponse>> Handle(GetQuestionsQuery request, CancellationToken cancellationToken)
     {
-        var questionnaireVersionExists =
+        var versionExists =
             await _context.QuestionnaireVersions
                 .AnyAsync(
                     x => x.Id == request.QuestionnaireVersionId,
                     cancellationToken);
 
-        if (!questionnaireVersionExists)
+        if (!versionExists)
         {
             return Result<GetQuestionsResponse>
                 .Failure(

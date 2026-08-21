@@ -12,7 +12,8 @@ public sealed class DeactivateQuestionnaireCommandHandler
 {
     private readonly IApplicationDbContext _context;
 
-    public DeactivateQuestionnaireCommandHandler(IApplicationDbContext context) => _context = context;
+    public DeactivateQuestionnaireCommandHandler(IApplicationDbContext context) => 
+        _context = context;
 
     public async Task<Result> Handle(DeactivateQuestionnaireCommand request, CancellationToken cancellationToken)
     {

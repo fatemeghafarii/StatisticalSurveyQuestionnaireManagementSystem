@@ -13,7 +13,8 @@ public sealed class GetQuestionnaireVersionsQueryHandler
 {
     private readonly IApplicationDbContext _context;
 
-    public GetQuestionnaireVersionsQueryHandler(IApplicationDbContext context) => _context = context;
+    public GetQuestionnaireVersionsQueryHandler(IApplicationDbContext context) => 
+        _context = context;
 
     public async Task<Result<GetQuestionnaireVersionsResponse>> Handle(GetQuestionnaireVersionsQuery request, CancellationToken cancellationToken)
     {
@@ -36,32 +37,32 @@ public sealed class GetQuestionnaireVersionsQueryHandler
 
         var items = 
             await query
-            .OrderByDescending(x => x.VersionNumber)
-            //.Skip((request.PageNumber - 1) * request.PageSize)
-            //.Take(request.PageSize)
-            .Skip((request.Pagination.PageNumber - 1) * request.Pagination.PageSize)
-            .Take(request.Pagination.PageSize)
-            .Select(x => new QuestionnaireVersionItem
-            {
-                Id = x.Id,
-               
-                QuestionnaireId = x.QuestionnaireId,
-                
-                VersionNumber = x.VersionNumber,
-                
-                Title = x.Title,
-                
-                EffectiveDate = x.EffectiveDate,
-                
-                StatusId = x.StatusId,
-                
-                StatusCode = x.Status.Code,
-                
-                StatusTitle = x.Title,
-                
-                IsActive = x.IsActive
-            })
-            .ToListAsync(cancellationToken); ;
+                .OrderByDescending(x => x.VersionNumber)
+                //.Skip((request.PageNumber - 1) * request.PageSize)
+                //.Take(request.PageSize)
+                .Skip((request.Pagination.PageNumber - 1) * request.Pagination.PageSize)
+                .Take(request.Pagination.PageSize)
+                .Select(x => new QuestionnaireVersionItem
+                {
+                    Id = x.Id,
+                   
+                    QuestionnaireId = x.QuestionnaireId,
+                    
+                    VersionNumber = x.VersionNumber,
+                    
+                    Title = x.Title,
+                    
+                    EffectiveDate = x.EffectiveDate,
+                    
+                    StatusId = x.StatusId,
+                    
+                    StatusCode = x.Status.Code,
+                    
+                    StatusTitle = x.Status.Title,
+                    
+                    IsActive = x.IsActive
+                })
+                .ToListAsync(cancellationToken); 
 
         var totalCount = await query.CountAsync(cancellationToken);
 

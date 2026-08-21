@@ -17,54 +17,63 @@ public class RoleSeeder
         {
             new()
             {
+                Code = "ADMIN",
                 Title = "ادمین",
                 Order = 1,
                 IsActive = true
             },
             new()
             {
+                Code = "SYSTEM_MANAGER",
                 Title = "مدیر سیستم",
                 Order = 2,
                 IsActive = true
             },
             new()
             {
+                Code = "STATISTICAL_PROJECT_MANAGER",
                 Title = "مدیر طرح آماری",
                 Order = 3,
                 IsActive = true
             },
             new()
             {
+                Code = "QUESTIONNAIRE_DESIGNER",
                 Title = "طراح پرسشنامه",
                 Order = 4,
                 IsActive = true
             },
             new()
             {
+                Code = "ENUMERATION_SUPERVISOR",
                 Title = "سرپرست آمارگیری",
                 Order = 5,
                 IsActive = true
             },
             new()
             {
+                Code = "ENUMERATOR",
                 Title = "آمارگیر",
                 Order = 6,
                 IsActive = true
             },
             new()
             {
+                Code = "DATA_REVIEWER",
                 Title = "بازبین داده‌ها",
                 Order = 7,
                 IsActive = true
             },
             new()
             {
+                Code = "DATA_REVIEWER",
                 Title = "تحلیلگر آماری",
                 Order = 8,
                 IsActive = true
             },
             new()
             {
+                Code = "VIEWER",
                 Title = "مشاهده‌گر",
                 Order = 9,
                 IsActive = true

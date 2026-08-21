@@ -12,35 +12,36 @@ public sealed class GetQuestionnaireVersionByIdQueryHandler
 {
     private readonly IApplicationDbContext _context;
 
-    public GetQuestionnaireVersionByIdQueryHandler(IApplicationDbContext context) => _context = context;
+    public GetQuestionnaireVersionByIdQueryHandler(IApplicationDbContext context) => 
+        _context = context;
 
     public async Task<Result<GetQuestionnaireVersionByIdResponse>> Handle(GetQuestionnaireVersionByIdQuery request, CancellationToken cancellationToken)
     {
         var version =
             await _context.QuestionnaireVersions
-            .AsNoTracking()
-            .Where(x => x.Id == request.Id)
-            .Select(x => new GetQuestionnaireVersionByIdResponse
-            {
-                Id = x.Id,
-                
-                QuestionnaireId = x.QuestionnaireId,
-                
-                VersionNumber = x.VersionNumber,
-                
-                Title = x.Title,
-                
-                EffectiveDate = x.EffectiveDate,
-                
-                StatusId = x.StatusId,
-                
-                StatusCode = x.Status.Code,
-                
-                StatusTitle = x.Title,
-                
-                IsActive = x.IsActive
-            })
-            .SingleOrDefaultAsync(cancellationToken);
+                .AsNoTracking()
+                .Where(x => x.Id == request.Id)
+                .Select(x => new GetQuestionnaireVersionByIdResponse
+                {
+                    Id = x.Id,
+                    
+                    QuestionnaireId = x.QuestionnaireId,
+                    
+                    VersionNumber = x.VersionNumber,
+                    
+                    Title = x.Title,
+                    
+                    EffectiveDate = x.EffectiveDate,
+                    
+                    StatusId = x.StatusId,
+                    
+                    StatusCode = x.Status.Code,
+                    
+                    StatusTitle = x.Status.Title,
+                    
+                    IsActive = x.IsActive
+                })
+                .SingleOrDefaultAsync(cancellationToken);
 
         if (version is null)
         {

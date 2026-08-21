@@ -13,7 +13,8 @@ public sealed class UpdateQuestionCommandHandler :
 {
     private readonly IApplicationDbContext _context;
 
-    public UpdateQuestionCommandHandler(IApplicationDbContext context) => _context = context;
+    public UpdateQuestionCommandHandler(IApplicationDbContext context) => 
+        _context = context;
 
     public async Task<Result<UpdateQuestionResponse>> Handle(UpdateQuestionCommand request, CancellationToken cancellationToken)
     {
@@ -21,7 +22,8 @@ public sealed class UpdateQuestionCommandHandler :
             await _context.Questions
                 .Include(x => x.QuestionnaireVersion)
                 .ThenInclude(x => x.Status)
-                    .SingleOrDefaultAsync(x => x.Id == request.Id,
+                .SingleOrDefaultAsync(
+                    x => x.Id == request.Id,
                     cancellationToken);
 
         if (question is null)

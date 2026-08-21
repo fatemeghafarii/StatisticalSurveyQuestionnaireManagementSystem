@@ -12,7 +12,8 @@ public sealed class GetQuestionnairesQueryHandler
 {
     private readonly IApplicationDbContext _context;
 
-    public GetQuestionnairesQueryHandler(IApplicationDbContext context) => _context = context;
+    public GetQuestionnairesQueryHandler(IApplicationDbContext context) => 
+        _context = context;
 
     public async Task<Result<GetQuestionnairesResponse>> Handle(GetQuestionnairesQuery request, CancellationToken cancellationToken)
     {
@@ -20,25 +21,24 @@ public sealed class GetQuestionnairesQueryHandler
             .AsNoTracking();
 
         var items =
-            await _context.Questionnaires
-            .AsNoTracking()
-            .Where(x => !x.IsDeleted)
-            .OrderByDescending(x => x.CreateDate)
-            .Skip((request.Pagination.PageNumber - 1) * request.Pagination.PageSize)
-            .Take(request.Pagination.PageSize)
-            .Select(x => new QuestionnaireItem
-            {
-                Id = x.Id,
-               
-                Title = x.Title,
-                
-                Code = x.Code,
-                
-                IsActive = x.IsActive,
-                
-                CreatedDate = x.CreateDate
-            })
-            .ToListAsync(cancellationToken);
+            await query
+                .Where(x => !x.IsDeleted)
+                .OrderByDescending(x => x.CreatedAt)
+                .Skip((request.Pagination.PageNumber - 1) * request.Pagination.PageSize)
+                .Take(request.Pagination.PageSize)
+                .Select(x => new QuestionnaireItem
+                {
+                    Id = x.Id,
+                   
+                    Title = x.Title,
+                    
+                    Code = x.Code,
+                    
+                    IsActive = x.IsActive,
+                    
+                    CreatedAt = x.CreatedAt
+                })
+                .ToListAsync(cancellationToken);
 
         var totalCount = await query.CountAsync(cancellationToken);
 

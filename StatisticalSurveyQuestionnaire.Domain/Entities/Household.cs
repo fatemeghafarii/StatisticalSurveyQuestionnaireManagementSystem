@@ -14,5 +14,5 @@ public class Household : BaseEntity<int>
     
     public ICollection<SurveyResponse> SurveyResponses { get; set; } = new List<SurveyResponse>();
     
-    public ICollection<Person> Persones { get; set; } = new List<Person>();
+    public ICollection<Person> Persons { get; set; } = new List<Person>();
 }

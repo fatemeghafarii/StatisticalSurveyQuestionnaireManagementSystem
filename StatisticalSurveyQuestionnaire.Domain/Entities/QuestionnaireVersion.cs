@@ -31,10 +31,12 @@ public class QuestionnaireVersion : BaseEntity<int>
     /// EffectiveDate => When the version officially becomes applicable
     /// SurveyPeriod => What statistical period does this survey cover?
     /// </summary>
+    //TODO:تغییر بکنه EffectiveAt بپرس که آیا باید نامش به  Chatgbt از 
     public DateTime EffectiveDate { get; set; }
     
     public int StatusId { get; set; }
-    
+
+    //TODO: به نظرم حذفش کنیم
     public bool IsActive { get; set; }
     
     public Questionnaire Questionnaire { get; set; } = null!;   

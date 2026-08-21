@@ -13,17 +13,18 @@ public sealed class DeleteQuestionOptionCommandHandler
 {
     private readonly IApplicationDbContext _context;
 
-    public DeleteQuestionOptionCommandHandler(IApplicationDbContext context) => _context = context;
+    public DeleteQuestionOptionCommandHandler(IApplicationDbContext context) => 
+        _context = context;
 
     public async Task<Result<bool>> Handle(DeleteQuestionOptionCommand request, CancellationToken cancellationToken)
     {
         var option =
             await _context.QuestionOptions
-            .Include(x => x.Question.QuestionnaireVersion)
-            .ThenInclude(x => x.Status)
-            .SingleOrDefaultAsync(
-                x => x.Id == request.Id,
-                cancellationToken);
+                .Include(x => x.Question.QuestionnaireVersion)
+                .ThenInclude(x => x.Status)
+                .SingleOrDefaultAsync(
+                    x => x.Id == request.Id,
+                    cancellationToken);
 
         if (option is null)
         {
@@ -54,10 +55,8 @@ public sealed class DeleteQuestionOptionCommandHandler
 
         _context.QuestionOptions.Remove(option);
 
-        await _context.SaveChangesAsync(
-            cancellationToken);
+        await _context.SaveChangesAsync(cancellationToken);
 
-        return Result<bool>
-            .Success(true);
+        return Result<bool>.Success(true);
     }
 }

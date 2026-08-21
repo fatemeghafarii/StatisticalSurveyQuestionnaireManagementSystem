@@ -7,6 +7,13 @@ using StatisticalSurveyQuestionnaire.Domain.Entities;
 
 namespace StatisticalSurveyQuestionnaire.Application.Features.Questions.Create;
 
+//TODO: Question business rules
+//For example:
+//Text question → should NOT have QuestionOptions
+//SingleChoice → should have options
+//MultipleChoice → should have options
+//Number → should NOT have options
+
 public sealed class CreateQuestionCommandHandler
     : IRequestHandler<
         CreateQuestionCommand,
@@ -14,12 +21,14 @@ public sealed class CreateQuestionCommandHandler
 {
     private readonly IApplicationDbContext _context;
 
-    public CreateQuestionCommandHandler(IApplicationDbContext context) => _context = context;
+    public CreateQuestionCommandHandler(IApplicationDbContext context) => 
+        _context = context;
 
     public async Task<Result<CreateQuestionResponse>> Handle(CreateQuestionCommand request, CancellationToken cancellationToken)
     {
         var version =
             await _context.QuestionnaireVersions
+                .AsNoTracking()
                 .Include(x => x.Status)
                 .SingleOrDefaultAsync(
                     x => x.Id == request.QuestionnaireVersionId,
@@ -64,7 +73,7 @@ public sealed class CreateQuestionCommandHandler
 
         var question = new Question
         {
-            QuestionnaireVersionId = request.QuestionTypeId,
+            QuestionnaireVersionId = request.QuestionnaireVersionId,
             
             Text = request.Text,
             

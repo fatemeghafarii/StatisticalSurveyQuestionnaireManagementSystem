@@ -1,6 +1,7 @@
 ﻿namespace StatisticalSurveyQuestionnaire.Domain.Enums;
 public enum Gender
 {
-    زن = 1,
-    مرد = 2
+    //TODO: Then the UI can display مرد / زن
+    Female = 1,
+    Male = 2
 }

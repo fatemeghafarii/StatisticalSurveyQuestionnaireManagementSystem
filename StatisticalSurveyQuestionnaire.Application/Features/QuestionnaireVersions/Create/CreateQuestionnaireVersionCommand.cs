@@ -8,5 +8,3 @@ public sealed record CreateQuestionnaireVersionCommand
     string Title,
     DateTime EffectiveDate
 ): IRequest<Result<CreateQuestionnaireVersionResponse>>;
-
-// TODO:we implement PublishQuestionnaireVersionCommand

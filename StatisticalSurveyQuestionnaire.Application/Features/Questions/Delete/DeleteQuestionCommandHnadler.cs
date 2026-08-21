@@ -13,17 +13,18 @@ namespace StatisticalSurveyQuestionnaire.Application.Features.Questions.Delete
     {
         private readonly IApplicationDbContext _context;
 
-        public DeleteQuestionCommandHnadler(IApplicationDbContext context) => _context = context;
+        public DeleteQuestionCommandHnadler(IApplicationDbContext context) => 
+            _context = context;
 
         public async Task<Result<bool>> Handle(DeleteQuestionCommand request, CancellationToken cancellationToken)
         {
             var question =
                 await _context.Questions
-                .Include(x => x.QuestionnaireVersion)
-                .ThenInclude(x => x.Status)
-                .SingleOrDefaultAsync(
-                    x => x.Id == request.Id,
-                    cancellationToken);
+                    .Include(x => x.QuestionnaireVersion)
+                    .ThenInclude(x => x.Status)
+                    .SingleOrDefaultAsync(
+                        x => x.Id == request.Id,
+                        cancellationToken);
 
             if (question is null)
             {
@@ -54,11 +55,9 @@ namespace StatisticalSurveyQuestionnaire.Application.Features.Questions.Delete
 
             _context.Questions.Remove(question);
 
-            await _context.SaveChangesAsync(
-                cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken);
 
-            return Result<bool>
-                .Success(true);
+            return Result<bool>.Success(true);
         }
     }
 }
