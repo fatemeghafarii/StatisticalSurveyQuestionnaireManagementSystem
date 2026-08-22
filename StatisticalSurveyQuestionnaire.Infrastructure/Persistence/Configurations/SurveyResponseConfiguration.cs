@@ -47,3 +47,29 @@ public class SurveyResponseConfiguration : IEntityTypeConfiguration<SurveyRespon
         .IsUnique();
     }
 }
+public class AnswerOptionConfiguration : IEntityTypeConfiguration<AnswerOption>
+{
+    public void Configure(EntityTypeBuilder<AnswerOption> builder)
+    {
+        builder.ToTable("AnswerOptions");
+
+        builder.HasKey(x => x.Id);
+
+        builder.HasOne(x => x.Answer)
+            .WithMany(x => x.AnswerOptions)
+            .HasForeignKey(x => x.AnswerId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasOne(x => x.QuestionOption)
+            .WithMany(x => x.AnswerOptions)
+            .HasForeignKey(x => x.QuestionOptionId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasIndex(x => new
+        {
+            x.AnswerId,
+            x.QuestionOptionId
+        })
+        .IsUnique();
+    }
+}

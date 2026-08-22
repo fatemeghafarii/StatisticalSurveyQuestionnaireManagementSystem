@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using StatisticalSurveyQuestionnaire.Domain.Common.Constants;
 using StatisticalSurveyQuestionnaire.Domain.Entities;
 using StatisticalSurveyQuestionnaire.Infrastructure.Persistence.Context;
 
@@ -16,7 +17,8 @@ public class QuestionTypeSeeder
         {
             new()
             {
-                Code = "TEXT",
+                //Code = "TEXT",
+                Code = QuestionTypeCodes.Text,
                 Title = "متنی",
                 Order = 1,
                 IsActive = true
@@ -24,7 +26,7 @@ public class QuestionTypeSeeder
 
             new()
             {
-                Code = "NUMBER",
+                Code = QuestionTypeCodes.Number,
                 Title = "عددی",
                 Order = 2,
                 IsActive = true
@@ -32,7 +34,7 @@ public class QuestionTypeSeeder
 
             new()
             {
-                Code = "SINGLE_CHOICE",
+                Code = QuestionTypeCodes.SingleChoice,
                 Title = "تک انتخابی",
                 Order = 3,
                 IsActive = true
@@ -40,7 +42,7 @@ public class QuestionTypeSeeder
 
             new()
             {
-                Code = "MULTIPLE_CHOICE",
+                Code = QuestionTypeCodes.MultipleChoice,
                 Title = "چند انتخابی",
                 Order = 4,
                 IsActive = true

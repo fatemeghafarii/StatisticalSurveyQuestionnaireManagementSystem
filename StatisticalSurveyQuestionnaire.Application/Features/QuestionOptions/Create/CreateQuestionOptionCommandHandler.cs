@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using StatisticalSurveyQuestionnaire.Application.Common.Constants;
 using StatisticalSurveyQuestionnaire.Application.Common.Interfaces;
 using StatisticalSurveyQuestionnaire.Application.Common.Models;
+using StatisticalSurveyQuestionnaire.Domain.Common.Constants;
 using StatisticalSurveyQuestionnaire.Domain.Entities;
 
 namespace StatisticalSurveyQuestionnaire.Application.Features.QuestionOptions.Create;
@@ -25,6 +26,7 @@ public sealed class CreateQuestionOptionCommandHandler
                 .AsNoTracking()
                 .Include(x => x.QuestionnaireVersion)
                 .ThenInclude(x => x.Status)
+                .Include(x => x.QuestionType)
                 .SingleOrDefaultAsync(x =>
                     x.Id == request.QuestionId,
                     cancellationToken);
@@ -42,6 +44,17 @@ public sealed class CreateQuestionOptionCommandHandler
             return Result<CreateQuestionOptionResponse>
                 .Failure(
                 "فقط برای سوالات نسخه پیش‌ نویس می‌توان گزینه اضافه کرد.");
+        }
+
+        var supportsOptions =
+            question.QuestionType.Code == QuestionTypeCodes.SingleChoice ||
+            question.QuestionType.Code == QuestionTypeCodes.MultipleChoice;
+
+        if (!supportsOptions)
+        {
+            return Result<CreateQuestionOptionResponse>
+                .Failure(
+                    "فقط برای سوالات تک انتخابی و چند انتخابی می‌توان گزینه تعریف کرد.");
         }
 
         var lastOrder =

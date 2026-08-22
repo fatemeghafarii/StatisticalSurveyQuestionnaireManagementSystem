@@ -16,6 +16,6 @@ public class QuestionOption : BaseEntity<int>
     public int Order { get; set; }
 
     public Question Question { get; set; } = null!;
-    
-    public ICollection<Answer> Answers { get; set; } = new List<Answer>();    
+
+    public ICollection<AnswerOption> AnswerOptions { get; set; } = new List<AnswerOption>();
 }

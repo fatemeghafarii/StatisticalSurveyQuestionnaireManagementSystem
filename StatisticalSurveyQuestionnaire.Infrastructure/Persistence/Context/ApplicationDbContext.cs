@@ -7,6 +7,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
     public DbSet<Answer> Answers { get; set; } = null!;
+    public DbSet<AnswerOption> AnswerOptions { get; set; } = null!;
     public DbSet<City> Cities { get; set; } = null!;
     public DbSet<EducationLevel> EducationLevels { get; set; } = null!;
     public DbSet<Household> Households { get; set; } = null!;

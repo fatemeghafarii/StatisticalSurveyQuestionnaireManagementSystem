@@ -40,18 +40,18 @@ public sealed class DeleteQuestionOptionCommandHandler
                 "فقط گزینه‌های سوالات نسخه پیش‌ نویس قابل حذف هستند.");
         }
 
-        var hasAnswers =
-               await _context.Answers
-                   .AnyAsync(
-                       x => x.QuestionOptionId == option.Id,
-                       cancellationToken);
+        //var hasAnswers =
+        //       await _context.Answers
+        //           .AnyAsync(
+        //               x => x.QuestionOptionId == option.Id,
+        //               cancellationToken);
 
-        if (hasAnswers)
-        {
-            return Result<bool>
-                .Failure(
-                    "این گزینه دارای پاسخ است و قابل حذف نیست.");
-        }
+        //if (hasAnswers)
+        //{
+        //    return Result<bool>
+        //        .Failure(
+        //            "این گزینه دارای پاسخ است و قابل حذف نیست.");
+        //}
 
         _context.QuestionOptions.Remove(option);
 

@@ -24,12 +24,11 @@ public class AnswerConfiguration : IEntityTypeConfiguration<Answer>
                .HasForeignKey(x => x.SurveyResponseId)
                .OnDelete(DeleteBehavior.Cascade);
 
-        builder.HasOne(x => x.QuestionOption)
-               .WithMany(x => x.Answers)
-               .HasForeignKey(x => x.QuestionOptionId)
-               .OnDelete(DeleteBehavior.Restrict);
-
-        builder.HasIndex(x => new { x.SurveyResponseId, x.QuestionId})
-               .IsUnique();
+        builder.HasIndex(x => new
+        {
+            x.SurveyResponseId,
+            x.QuestionId
+        })
+        .IsUnique();
     }
 }
